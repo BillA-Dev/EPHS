@@ -92,7 +92,7 @@ struct ContentView: View {
                             Text("until \(whatHour)")
                         }
                         Text("\(timeLeft) left").fontWeight(.light).padding()
-                    }
+                    }.padding()
                     
                 }
                 
