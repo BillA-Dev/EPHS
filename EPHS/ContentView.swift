@@ -59,13 +59,13 @@ struct ContentView: View {
                 
                 HStack{
                     Spacer()
-                if currentDay != "Tuesday"{
-                    Text("\(currentDay) - regular day")
-                        .font(.headline)
-                        .fontWeight(.semibold).padding(.leading, 60.0)
-                }else{
-                    Text("\(currentDay) - Flex")
-                }
+                    if currentDay != "Tuesday"{
+                        Text("\(currentDay) - regular day")
+                            .font(.headline)
+                            .fontWeight(.semibold).padding(.leading, 60.0)
+                    }else{
+                        Text("\(currentDay) - Flex")
+                    }
                     Spacer()
                     Button(action:{
                         
@@ -91,7 +91,7 @@ struct ContentView: View {
                         }else{
                             Text("until \(whatHour)")
                         }
-                        Text("\(timeLeft) left").fontWeight(.light).padding()
+                        Text("\(timeLeft) left").fontWeight(.light).padding().padding()
                     }.padding()
                     
                 }
@@ -126,12 +126,14 @@ struct ContentView: View {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
             
             timeRemaing()
-           
+            
             if progressValue/timeInTheHour >= 1{
-    
-//                functionThatEncapsulatesALL()
-//                Timer.invalidate()
+                
+                //                functionThatEncapsulatesALL()
+                //                Timer.invalidate()
                 //Those 2 lines OR these 2 lines
+                //Wait function - about a seconds before executing
+                sleep(1)
                 progressValue = 0
                 whatHourCurrently()
                 timeTheClassLastFor()
@@ -232,21 +234,48 @@ struct ContentView: View {
         
     }
     
-    func formatTime(minutes mn: Int){
-        let minutes = mn%60
-        let hours = Int(floor(Double(mn/60)))
-        timeLeft="\(String(hours)) hour and \(minutes) minutes"
-        //        if String(minutes).count == 1{
-        //            timeLeft="\(String(hours)) hour and 0\(minutes) minutes"
-        //        }else{
-        //            timeLeft="\(String(hours)) hour and \(minutes) minutes"
-        //        }
-        
-        
+    func formatTime(minutes mn: Float){
+        let hour = floor(mn/60)
+        let minute = floor(mn-(hour*60))
+        let seconds = floor((mn-(hour*60)-minute)*60)
+        if hour == 0.0{
+            if minute == 1{
+                timeLeft="\(minute) minute and \(seconds) seconds"
+            }else{
+                timeLeft="\(minute) minutes and \(seconds) seconds"
+            }
+        }else if minute == 0.0{
+            if hour == 0.0{
+                timeLeft="\(seconds) seconds"
+            }else{
+                if hour == 1.0{
+                    timeLeft="\(hour) hour and \(seconds) seconds"
+                }else{
+                    timeLeft="\(hour) hours and \(seconds) seconds"
+                }
+            }
+            
+        }else{
+            if hour == 1.0{
+                if minute == 1{
+                    timeLeft="\(hour) hour \(minute) minute and \(seconds) seconds"
+                }else{
+                    timeLeft="\(hour) hour \(minute) minutes and \(seconds) seconds"
+                }
+
+            }else{
+                if minute == 1{
+                    timeLeft="\(hour) hours \(minute) minute and \(seconds) seconds"
+                }else{
+                    timeLeft="\(hour) hours \(minute) minutes and \(seconds) seconds"
+                }
+                
+            }
         
         
     }
     
+    }
     func timeRemaing(){
         
         //THIS IS FOR THE NUMERATOR
@@ -268,7 +297,7 @@ struct ContentView: View {
             
             progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))
             
-            formatTime(minutes: Int(abs(secondTime-currentTime)))
+            formatTime(minutes: abs(secondTime-currentTime))
         }else{
             
             let arr: [String] = timeDict[whatHour] ?? [""]
@@ -284,7 +313,7 @@ struct ContentView: View {
                 let hour = Float(endTime[..<endTime.firstIndex(of: ":")!])!*60
                 let minutes = Float(endTime[endTime.index(after: endTime.firstIndex(of: ":")!)...])!
                 time+=hour+minutes
-                formatTime(minutes: Int(time))
+                formatTime(minutes: time)
                 progressValue = Float(abs(timeInTheHour-Float(time)))
                 
                 
@@ -300,7 +329,7 @@ struct ContentView: View {
                 
                 progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))
                 
-                formatTime(minutes: Int(abs(secondTime-currentTime)))
+                formatTime(minutes: abs(secondTime-currentTime))
             }
             
             
@@ -315,55 +344,55 @@ struct ContentView: View {
     
     
     
-//    Add Lunch Functino here
-//    func addLunch(enterLunch usersLunch: Int){
-//
-//
-//        //This will also be connected to a database, lunch timings
-//
-//        //Get there lunch. \
-//    //    let usersLunch = 0 //They will have a dropdown that the user can choose from
-//        let lunchTimings: [[String]] = [["11:45", "12:15"],["12:15", "12:45"], ["12:45", "13:15"], ["13:15", "13:45"]]
-//        var getArr = timeDict["3rd hour"]!
-//
-//        //If they have firstLunch do that first
-//        if usersLunch == 0{
-//
-//            getArr[0] = lunchTimings[0][1]
-//            timeDict["3rd hour"] = getArr
-//            timeDict["First Lunch"] = lunchTimings[0]
-//    //        print(timeDict["3rd hour"] ?? "Didnt Work")
-//        } else if usersLunch == 1{
-//            //["11:45", "13:45"]
-//            let thirdHourEnding = getArr[1]
-//            getArr[1] = lunchTimings[1][0]
-//            var secondArr = ["",""]
-//            secondArr[0] = lunchTimings[1][1]
-//            secondArr[1] = thirdHourEnding
-//            timeDict["3rd hour"] = getArr
-//            timeDict["Second Lunch"] = lunchTimings[1]
-//            timeDict["3rd hour (2)"] = secondArr
-//        }else if usersLunch == 2{
-//            let thirdHourEnding = getArr[1]
-//            getArr[1] = lunchTimings[2][0]
-//            var secondArr = ["",""]
-//            secondArr[0] = lunchTimings[2][1]
-//            secondArr[1] = thirdHourEnding
-//            timeDict["3rd hour"] = getArr
-//            timeDict["Third Lunch"] = lunchTimings[1]
-//            timeDict["3rd hour (2)"] = secondArr
-//        }else if usersLunch == 3{
-//
-//            // 4th lunch
-//            //["11:45", "13:45"]
-//
-//            getArr[1] = lunchTimings[3][0]
-//            timeDict["3rd hour"] = getArr
-//            timeDict["4th Lunch"] = lunchTimings[3]
-//    //        print(timeDict["3rd hour"] ?? "Didnt Work")
-//        }
-//
-//    }
+    //    Add Lunch Functino here
+    //    func addLunch(enterLunch usersLunch: Int){
+    //
+    //
+    //        //This will also be connected to a database, lunch timings
+    //
+    //        //Get there lunch. \
+    //    //    let usersLunch = 0 //They will have a dropdown that the user can choose from
+    //        let lunchTimings: [[String]] = [["11:45", "12:15"],["12:15", "12:45"], ["12:45", "13:15"], ["13:15", "13:45"]]
+    //        var getArr = timeDict["3rd hour"]!
+    //
+    //        //If they have firstLunch do that first
+    //        if usersLunch == 0{
+    //
+    //            getArr[0] = lunchTimings[0][1]
+    //            timeDict["3rd hour"] = getArr
+    //            timeDict["First Lunch"] = lunchTimings[0]
+    //    //        print(timeDict["3rd hour"] ?? "Didnt Work")
+    //        } else if usersLunch == 1{
+    //            //["11:45", "13:45"]
+    //            let thirdHourEnding = getArr[1]
+    //            getArr[1] = lunchTimings[1][0]
+    //            var secondArr = ["",""]
+    //            secondArr[0] = lunchTimings[1][1]
+    //            secondArr[1] = thirdHourEnding
+    //            timeDict["3rd hour"] = getArr
+    //            timeDict["Second Lunch"] = lunchTimings[1]
+    //            timeDict["3rd hour (2)"] = secondArr
+    //        }else if usersLunch == 2{
+    //            let thirdHourEnding = getArr[1]
+    //            getArr[1] = lunchTimings[2][0]
+    //            var secondArr = ["",""]
+    //            secondArr[0] = lunchTimings[2][1]
+    //            secondArr[1] = thirdHourEnding
+    //            timeDict["3rd hour"] = getArr
+    //            timeDict["Third Lunch"] = lunchTimings[1]
+    //            timeDict["3rd hour (2)"] = secondArr
+    //        }else if usersLunch == 3{
+    //
+    //            // 4th lunch
+    //            //["11:45", "13:45"]
+    //
+    //            getArr[1] = lunchTimings[3][0]
+    //            timeDict["3rd hour"] = getArr
+    //            timeDict["4th Lunch"] = lunchTimings[3]
+    //    //        print(timeDict["3rd hour"] ?? "Didnt Work")
+    //        }
+    //
+    //    }
     
     
 }
