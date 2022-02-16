@@ -9,6 +9,7 @@
 
 import SwiftUI
 import Foundation
+import AudioToolbox
 
 
 //Live updating swiftUI time done
@@ -20,7 +21,7 @@ struct ContentView: View {
     
     @State var progressValue: Float = 0.0
     @State var currentTime: String = "Time:"
-    var timeDict = ["1st hour": ["8:35", "10:03"],
+    @State var timeDict = ["1st hour": ["8:35", "10:03"],
                     "Passing Time 1st hour": ["10:03", "10:10"],
                     "2nd hour": ["10:10", "11:38"],
                     "Passing Time 2nd hour": ["11:38", "11:45"],
@@ -59,12 +60,24 @@ struct ContentView: View {
                 
                 HStack{
                     Spacer()
-                    if currentDay != "Tuesday"{
-                        Text("\(currentDay) - regular day")
+                    Button(action:{
+                        
+                    }){
+                        Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0)
+                    }.padding()
+                    Spacer()
+                    if currentDay == "Tuesday"{
+                        Text("\(currentDay) - Flex")
+                            .font(.headline)
+                            .fontWeight(.semibold).padding()
+                    }else if currentDay == "Thursday" {
+                        Text("\(currentDay) - Core")
                             .font(.headline)
                             .fontWeight(.semibold).padding(.leading, 60.0)
                     }else{
-                        Text("\(currentDay) - Flex")
+                        Text("\(currentDay) - Regular Day")
+                            .font(.headline)
+                            .fontWeight(.semibold).padding()
                     }
                     Spacer()
                     Button(action:{
@@ -72,6 +85,7 @@ struct ContentView: View {
                     }){
                         Image(systemName: "gearshape.fill").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
+                    Spacer()
                     
                     
                 }
@@ -91,7 +105,7 @@ struct ContentView: View {
                         }else{
                             Text("until \(whatHour)")
                         }
-                        Text("\(timeLeft) left").fontWeight(.light).padding().padding()
+                        Text("\(timeLeft) left").font(.caption).fontWeight(.light).padding()
                     }.padding()
                     
                 }
@@ -102,6 +116,36 @@ struct ContentView: View {
             
             
         }.onAppear{functionThatEncapsulatesALL(); print("ran code")}
+    }
+    
+    func changeTimeDict(){
+        if currentDay == "Tuesday"{
+            timeDict = ["1st hour": ["8:35", "9:38"],
+                            "Passing Time to connections": ["9:38", "9:45"],
+                            "Connections": ["9:45","10:05"],
+                            "Passing Time to 2nd Hour": ["10:05","10:12"],
+                            "2nd hour": ["10:12", "11:15"],
+                            "Passing Time to 3rd hour": ["11:15", "11:22"],
+                            "3rd hour": ["11:22", "13:22"],
+                            "Passing Time to 4th hour": ["13:22", "13:29"],
+                            "4th hour": ["13:29", "14:33"],
+                        "Passing time to flex": ["14:33", "14:40"],
+                        "Flex": ["14:40","15:20"],
+                            "School Starts" : ["15:20", "8:35"]]
+        }else if currentDay == "Thursday"{
+            timeDict = ["1st hour": ["8:35", "9:33"],
+                        "Core 1st hour": ["9:33", "10:03"],
+                            "Passing Time to 2nd hour": ["10:03", "10:10"],
+                            "2nd hour": ["10:10", "11:08"],
+                        "Core 2nd hour": ["11:08", "11:38"],
+                            "Passing Time to 3rd hour": ["11:38", "11:45"],
+                            "3rd hour": ["11:45", "13:15"],
+                        "Core 3rd hour": ["13:15", "13:45"],
+                            "Passing Time to 4th hour": ["13:45", "13:53"],
+                            "4th hour": ["13:53", "14:50"],
+                        "Core 4th hour": ["14:50", "15:20"],
+                            "School Starts" : ["15:20", "8:35"]]
+        }
     }
     
     func getDayOfTheWeek(){
@@ -126,18 +170,26 @@ struct ContentView: View {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
             
             timeRemaing()
+            getDayOfTheWeek()
+            changeTimeDict()
+            whatHourCurrently()
+            timeTheClassLastFor()
             
             if progressValue/timeInTheHour >= 1{
-                
-                //                functionThatEncapsulatesALL()
-                //                Timer.invalidate()
-                //Those 2 lines OR these 2 lines
-                //Wait function - about a seconds before executing
-                sleep(1)
-                progressValue = 0
-                whatHourCurrently()
-                timeTheClassLastFor()
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
+            
+//            if progressValue/timeInTheHour >= 1{
+//
+//                //                functionThatEncapsulatesALL()
+//                //                Timer.invalidate()
+//                //Those 2 lines OR these 2 lines
+//                //Wait function - about a seconds before executing
+//                sleep(1)
+//                progressValue = 0
+//                whatHourCurrently()
+//                timeTheClassLastFor()
+//            }
             
             
         }
