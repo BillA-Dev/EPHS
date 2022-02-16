@@ -22,13 +22,14 @@ struct ContentView: View {
     @State var progressValue: Float = 0.0
     @State var currentTime: String = "Time:"
     @State var timeDict = ["1st hour": ["8:35", "10:03"],
-                    "Passing Time 1st hour": ["10:03", "10:10"],
-                    "2nd hour": ["10:10", "11:38"],
-                    "Passing Time 2nd hour": ["11:38", "11:45"],
-                    "3rd hour": ["11:45", "13:45"],
-                    "Passing Time 3rd hour": ["13:45", "13:53"],
-                    "4th hour": ["13:53", "15:20"],
-                    "School Starts" : ["15:20", "8:35"]]
+                           "Passing Time 1st hour": ["10:03", "10:10"],
+                           "2nd hour": ["10:10", "11:38"],
+                           "Passing Time 2nd hour": ["11:38", "11:45"],
+                           "3rd hour": ["11:45", "13:45"],
+                           "Passing Time 3rd hour": ["13:45", "13:53"],
+                           "4th hour": ["13:53", "15:20"],
+                           "Busses Leave": ["15:20", "15:27"],
+                           "School Starts" : ["15:27", "8:35"]]
     
     
     
@@ -121,30 +122,32 @@ struct ContentView: View {
     func changeTimeDict(){
         if currentDay == "Tuesday"{
             timeDict = ["1st hour": ["8:35", "9:38"],
-                            "Passing Time to connections": ["9:38", "9:45"],
-                            "Connections": ["9:45","10:05"],
-                            "Passing Time to 2nd Hour": ["10:05","10:12"],
-                            "2nd hour": ["10:12", "11:15"],
-                            "Passing Time to 3rd hour": ["11:15", "11:22"],
-                            "3rd hour": ["11:22", "13:22"],
-                            "Passing Time to 4th hour": ["13:22", "13:29"],
-                            "4th hour": ["13:29", "14:33"],
+                        "Passing Time to connections": ["9:38", "9:45"],
+                        "Connections": ["9:45","10:05"],
+                        "Passing Time to 2nd Hour": ["10:05","10:12"],
+                        "2nd hour": ["10:12", "11:15"],
+                        "Passing Time to 3rd hour": ["11:15", "11:22"],
+                        "3rd hour": ["11:22", "13:22"],
+                        "Passing Time to 4th hour": ["13:22", "13:29"],
+                        "4th hour": ["13:29", "14:33"],
                         "Passing time to flex": ["14:33", "14:40"],
                         "Flex": ["14:40","15:20"],
-                            "School Starts" : ["15:20", "8:35"]]
+                        "Busses Leave": ["15:20", "15:27"],
+                        "School Starts" : ["15:20", "8:35"]]
         }else if currentDay == "Thursday"{
             timeDict = ["1st hour": ["8:35", "9:33"],
                         "Core 1st hour": ["9:33", "10:03"],
-                            "Passing Time to 2nd hour": ["10:03", "10:10"],
-                            "2nd hour": ["10:10", "11:08"],
+                        "Passing Time to 2nd hour": ["10:03", "10:10"],
+                        "2nd hour": ["10:10", "11:08"],
                         "Core 2nd hour": ["11:08", "11:38"],
-                            "Passing Time to 3rd hour": ["11:38", "11:45"],
-                            "3rd hour": ["11:45", "13:15"],
+                        "Passing Time to 3rd hour": ["11:38", "11:45"],
+                        "3rd hour": ["11:45", "13:15"],
                         "Core 3rd hour": ["13:15", "13:45"],
-                            "Passing Time to 4th hour": ["13:45", "13:53"],
-                            "4th hour": ["13:53", "14:50"],
+                        "Passing Time to 4th hour": ["13:45", "13:53"],
+                        "4th hour": ["13:53", "14:50"],
                         "Core 4th hour": ["14:50", "15:20"],
-                            "School Starts" : ["15:20", "8:35"]]
+                        "Busses Leave": ["15:20", "15:27"],
+                        "School Starts" : ["15:20", "8:35"]]
         }
     }
     
@@ -179,17 +182,17 @@ struct ContentView: View {
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
             
-//            if progressValue/timeInTheHour >= 1{
-//
-//                //                functionThatEncapsulatesALL()
-//                //                Timer.invalidate()
-//                //Those 2 lines OR these 2 lines
-//                //Wait function - about a seconds before executing
-//                sleep(1)
-//                progressValue = 0
-//                whatHourCurrently()
-//                timeTheClassLastFor()
-//            }
+            //            if progressValue/timeInTheHour >= 1{
+            //
+            //                //                functionThatEncapsulatesALL()
+            //                //                Timer.invalidate()
+            //                //Those 2 lines OR these 2 lines
+            //                //Wait function - about a seconds before executing
+            //                sleep(1)
+            //                progressValue = 0
+            //                whatHourCurrently()
+            //                timeTheClassLastFor()
+            //            }
             
             
         }
@@ -314,7 +317,7 @@ struct ContentView: View {
                 }else{
                     timeLeft="\(hour) hour \(minute) minutes and \(seconds) seconds"
                 }
-
+                
             }else{
                 if minute == 1{
                     timeLeft="\(hour) hours \(minute) minute and \(seconds) seconds"
@@ -323,10 +326,10 @@ struct ContentView: View {
                 }
                 
             }
+            
+            
+        }
         
-        
-    }
-    
     }
     func timeRemaing(){
         
