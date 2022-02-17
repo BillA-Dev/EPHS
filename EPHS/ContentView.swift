@@ -289,7 +289,8 @@ struct ContentView: View {
     }
     
     func formatTime(minutes ms: Float){
-        //Problem with my code here; figure it out.
+      
+        //hope
         var mn = ms
         mn = round(mn*100)/100
         print(mn)
@@ -298,10 +299,7 @@ struct ContentView: View {
         let seconds = round((round(mn.truncatingRemainder(dividingBy: 1)*100)/100)*60)
 //        print(round(seconds*60))
         
-//        var seconds = floor(mn * 60)
-//        print(seconds)
-//        seconds = seconds - (hour*60*60)
-//        seconds = seconds - (minute*60)
+
        
         if hour == 0.0{
             if minute == 1{
