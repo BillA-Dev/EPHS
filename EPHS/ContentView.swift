@@ -298,7 +298,7 @@ struct ContentView: View {
         let minute = floor(mn-(hour*60))
         let seconds = round((round(mn.truncatingRemainder(dividingBy: 1)*100)/100)*60)
 //        print(round(seconds*60))
-        
+        //sdf
 //Fixed seconds not updating
        
         if hour == 0.0{
