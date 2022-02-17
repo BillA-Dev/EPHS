@@ -10,4 +10,4 @@ Version 0.1 Build 2
 Version 0.1 Build 3
   - Added busses leaving
   - Added buzzing when class ends
-  - 
+  - Fixing seconds not updating properly
