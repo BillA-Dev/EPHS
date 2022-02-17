@@ -299,7 +299,7 @@ struct ContentView: View {
         let seconds = round((round(mn.truncatingRemainder(dividingBy: 1)*100)/100)*60)
 //        print(round(seconds*60))
         
-
+//Fixed seconds not updating
        
         if hour == 0.0{
             if minute == 1{
