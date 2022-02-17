@@ -19,6 +19,9 @@ struct ContentView: View {
     //This might work IDEK
     //ADD A LUNCH FUNCTION
     
+    
+    @State var showingSettings: Bool = false
+    
     @State var progressValue: Float = 0.0
     @State var currentTime: String = "Time:"
     @State var timeDict = ["1st hour": ["8:35", "10:03"],
@@ -81,7 +84,9 @@ struct ContentView: View {
                     }
                     Spacer()
                     Button(action:{
-                        
+                        showingSettings.toggle()
+                        //If false turns it to true
+                        //if ture turns it to false
                     }){
                         Image(systemName: "gearshape.fill").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
@@ -90,6 +95,7 @@ struct ContentView: View {
                     
                 }
                 Spacer()
+                
                 
                 
                 ProgressBar(progress: $progressValue, timeInTheClass: $timeInTheHour).overlay{
@@ -114,8 +120,13 @@ struct ContentView: View {
                 
             }
             
+            //If it fails, work on this
+            //This is the view, when settings is clicked 
+            LunchSelectionView(isShowing: $showingSettings)
             
         }.onAppear{functionThatEncapsulatesALL(); print("ran code")}
+        
+        
     }
     
     func changeTimeDict(){
@@ -290,16 +301,14 @@ struct ContentView: View {
     
     func formatTime(minutes ms: Float){
       
-        //hope
+
         var mn = ms
         mn = round(mn*100)/100
-        print(mn)
+//        print(mn)
         let hour = floor(mn/60)
         let minute = floor(mn-(hour*60))
         let seconds = round((round(mn.truncatingRemainder(dividingBy: 1)*100)/100)*60)
-//        print(round(seconds*60))
-        //sdf
-//Fixed seconds not updating
+
        
         if hour == 0.0{
             if minute == 1{
