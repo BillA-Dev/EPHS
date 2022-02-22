@@ -14,24 +14,36 @@ import AudioToolbox
 
 //Live updating swiftUI time done
 
+
+//Should work, Idek;
+
+
+class dictionary: ObservableObject{
+    @Published var timeDict =  ["1st hour": ["8:35", "10:03"],
+                                "Passing Time 1st hour": ["10:03", "10:10"],
+                                "2nd hour": ["10:10", "11:38"],
+                                "Passing Time 2nd hour": ["11:38", "11:45"],
+                                "3rd hour": ["11:45", "13:45"],
+                                "Passing Time 3rd hour": ["13:45", "13:53"],
+                                "4th hour": ["13:53", "15:20"],
+                                       "Busses Leave" : ["15:20", "15:27"],
+                                "School Starts" : ["15:20", "8:35"]]
+    
+    
+}
+
 struct ContentView: View {
     
     //This might work IDEK
     //ADD A LUNCH FUNCTION
     
+    @State var dayUpdater = "Monday"
     
     @State var showingSettings: Bool = false
     
     @State var progressValue: Float = 0.0
     @State var currentTime: String = "Time:"
-    @State var timeDict = ["1st hour": ["8:35", "10:03"],
-                    "Passing Time 1st hour": ["10:03", "10:10"],
-                    "2nd hour": ["10:10", "11:38"],
-                    "Passing Time 2nd hour": ["11:38", "11:45"],
-                    "3rd hour": ["11:45", "13:45"],
-                    "Passing Time 3rd hour": ["13:45", "13:53"],
-                    "4th hour": ["13:53", "15:20"],
-                    "School Starts" : ["15:20", "8:35"]]
+    @StateObject var timeDict = dictionary()
     
     
     
@@ -120,18 +132,72 @@ struct ContentView: View {
                 
             }
             
-            //If it fails, work on this
-            //This is the view, when settings is clicked 
-            LunchSelectionView(isShowing: $showingSettings)
             
-        }.onAppear{functionThatEncapsulatesALL(); print("ran code")}
+            LunchSelectionView(isShowing: $showingSettings)
+           
+            
+        }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek()}.environmentObject(timeDict)
         
         
     }
     
+//    func addLunch(enterLunch usersLunch: Int){
+//    //Fix lunch func aint working, put this in playground maybe
+//        print(usersLunch)
+//            //This will also be connected to a database, lunch timings
+//    
+//            //Get there lunch. \
+//        //    let usersLunch = 0 //They will have a dropdown that the user can choose from
+//            let lunchTimings: [[String]] = [["11:45", "12:15"],["12:15", "12:45"], ["12:45", "13:15"], ["13:15", "13:45"]]
+//            var getArr =  timeDict.timeDict["3rd hour"]!
+//    
+//            //If they have firstLunch do that first
+//            if usersLunch == 0{
+//    
+//                getArr[0] = lunchTimings[0][1]
+//                timeDict.timeDict["3rd hour"] = getArr
+//                timeDict.timeDict["First Lunch"] = lunchTimings[0]
+//        //        print(timeDict["3rd hour"] ?? "Didnt Work")
+//            } else if usersLunch == 1{
+//                //["11:45", "13:45"]
+//                let thirdHourEnding = getArr[1]
+//                getArr[1] = lunchTimings[1][0]
+//                var secondArr = ["",""]
+//                secondArr[0] = lunchTimings[1][1]
+//                secondArr[1] = thirdHourEnding
+//                timeDict.timeDict["3rd hour"] = getArr
+//                timeDict.timeDict["Second Lunch"] = lunchTimings[1]
+//                timeDict.timeDict["3rd hour (2)"] = secondArr
+//            }else if usersLunch == 2{
+//               
+//                let thirdHourEnding = getArr[1]
+//                getArr[1] = lunchTimings[2][0]
+//                var secondArr = ["",""]
+//                secondArr[0] = lunchTimings[2][1]
+//                secondArr[1] = thirdHourEnding
+//                timeDict.timeDict["3rd hour"] = getArr
+//                timeDict.timeDict["Third Lunch"] = lunchTimings[1]
+//                timeDict.timeDict["3rd hour (2)"] = secondArr
+//                currentDay = "Sunday"
+//                print(currentDay)
+//                
+//            }else if usersLunch == 3{
+//    
+//                // 4th lunch
+//                //["11:45", "13:45"]
+//    
+//                getArr[1] = lunchTimings[3][0]
+//                timeDict.timeDict["3rd hour"] = getArr
+//                timeDict.timeDict["4th Lunch"] = lunchTimings[3]
+//        //        print(timeDict["3rd hour"] ?? "Didnt Work")
+//            }
+//        
+//    
+//        }
+    
     func changeTimeDict(){
         if currentDay == "Tuesday"{
-            timeDict = ["1st hour": ["8:35", "9:38"],
+            timeDict.timeDict = ["1st hour": ["8:35", "9:38"],
                             "Passing Time to connections": ["9:38", "9:45"],
                             "Connections": ["9:45","10:05"],
                             "Passing Time to 2nd Hour": ["10:05","10:12"],
@@ -142,9 +208,10 @@ struct ContentView: View {
                             "4th hour": ["13:29", "14:33"],
                         "Passing time to flex": ["14:33", "14:40"],
                         "Flex": ["14:40","15:20"],
+                        "Busses Leave" : ["15:20", "15:27"],
                             "School Starts" : ["15:20", "8:35"]]
         }else if currentDay == "Thursday"{
-            timeDict = ["1st hour": ["8:35", "9:33"],
+            timeDict.timeDict = ["1st hour": ["8:35", "9:33"],
                         "Core 1st hour": ["9:33", "10:03"],
                             "Passing Time to 2nd hour": ["10:03", "10:10"],
                             "2nd hour": ["10:10", "11:08"],
@@ -155,26 +222,62 @@ struct ContentView: View {
                             "Passing Time to 4th hour": ["13:45", "13:53"],
                             "4th hour": ["13:53", "14:50"],
                         "Core 4th hour": ["14:50", "15:20"],
+                        "Busses Leave" : ["15:20", "15:27"],
                             "School Starts" : ["15:20", "8:35"]]
         }
     }
     
-    func getDayOfTheWeek(){
+    
+    
+    
+    func getDayOfTheWeek() -> String{
         let today = Date()
         let day = Int(Calendar.current.component(.weekday, from: today))
         
         currentDay = dates[day]!
+        return dates[day]!
     }
     
+    func lunchSetter(){
+        //gets user defualts
+        //runs the lunch function here
+    }
+    
+    func resetTimeDict(){
+        //This is for when the user disables lunch
+        if currentDay == "Tuesday" || currentDay == "Thursday"{
+          changeTimeDict()
+        }else{
+            timeDict.timeDict = ["1st hour": ["8:35", "10:03"],
+                        "Passing Time 1st hour": ["10:03", "10:10"],
+                        "2nd hour": ["10:10", "11:38"],
+                        "Passing Time 2nd hour": ["11:38", "11:45"],
+                        "3rd hour": ["11:45", "13:45"],
+                        "Passing Time 3rd hour": ["13:45", "13:53"],
+                        "4th hour": ["13:53", "15:20"],
+                               "Busses Leave" : ["15:20", "15:27"],
+                        "School Starts" : ["15:20", "8:35"]]
+        }
+    }
     
     //Functions Here
     
     private func functionThatEncapsulatesALL(){
         //Get  date here
+        
+        
+        //Run lunch function; when get userDefault
+        //Other than that run, the other
+        
+        
         getDayOfTheWeek()
         whatHourCurrently()
+        
         changeTimeDict()
+        
         timeTheClassLastFor()
+        //Run lunch when app starts
+        lunchSetter()
         runTimer()
     }
     
@@ -183,8 +286,15 @@ struct ContentView: View {
             
             timeRemaing()
             
-            getDayOfTheWeek()
-            changeTimeDict()
+            if dayUpdater != getDayOfTheWeek(){
+                //Make sure not to run this code again
+                
+                getDayOfTheWeek()
+                changeTimeDict()
+                //Run lunch function here
+//                lunchSetter()
+            }
+            
             whatHourCurrently()
             timeTheClassLastFor()
           
@@ -226,7 +336,7 @@ struct ContentView: View {
         var currentlyInSchool = false
         
         
-        timeDict.forEach{hour, time in
+        timeDict.timeDict.forEach{hour, time in
             let beginningTime = time[0]
             let endingTime = time[1]
             
@@ -271,7 +381,7 @@ struct ContentView: View {
         //THIS IS FOR PROGRESS BAR DENOMINATOR
         //THIS WILL BE A BINDING AND STATE
         
-        let arr: [String] = timeDict[whatHour] ?? [""] //OR !
+        let arr: [String] = timeDict.timeDict[whatHour] ?? [""] //OR !
         
         let timeOne = arr[0]
         let timeTwo = arr[1]
@@ -361,7 +471,7 @@ struct ContentView: View {
             
             let currentTime = (hours*60) + minutes + (seconds/60)
             
-            let arr: [String] = timeDict[whatHour] ?? [""]
+            let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
             let timeTwo = arr[1]
             
             let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
@@ -372,7 +482,7 @@ struct ContentView: View {
             formatTime(minutes: abs(secondTime-currentTime))
         }else{
             
-            let arr: [String] = timeDict[whatHour] ?? [""]
+            let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
             
             if hours > 12{
                 
@@ -393,7 +503,7 @@ struct ContentView: View {
                 //This seems to work
                 let currentTime = (hours*60) + minutes + (seconds/60)
                 
-                let arr: [String] = timeDict[whatHour] ?? [""]
+                let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
                 let timeTwo = arr[1]
                 
                 let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
@@ -417,54 +527,6 @@ struct ContentView: View {
     
     
     //    Add Lunch Functino here
-    //    func addLunch(enterLunch usersLunch: Int){
-    //
-    //
-    //        //This will also be connected to a database, lunch timings
-    //
-    //        //Get there lunch. \
-    //    //    let usersLunch = 0 //They will have a dropdown that the user can choose from
-    //        let lunchTimings: [[String]] = [["11:45", "12:15"],["12:15", "12:45"], ["12:45", "13:15"], ["13:15", "13:45"]]
-    //        var getArr = timeDict["3rd hour"]!
-    //
-    //        //If they have firstLunch do that first
-    //        if usersLunch == 0{
-    //
-    //            getArr[0] = lunchTimings[0][1]
-    //            timeDict["3rd hour"] = getArr
-    //            timeDict["First Lunch"] = lunchTimings[0]
-    //    //        print(timeDict["3rd hour"] ?? "Didnt Work")
-    //        } else if usersLunch == 1{
-    //            //["11:45", "13:45"]
-    //            let thirdHourEnding = getArr[1]
-    //            getArr[1] = lunchTimings[1][0]
-    //            var secondArr = ["",""]
-    //            secondArr[0] = lunchTimings[1][1]
-    //            secondArr[1] = thirdHourEnding
-    //            timeDict["3rd hour"] = getArr
-    //            timeDict["Second Lunch"] = lunchTimings[1]
-    //            timeDict["3rd hour (2)"] = secondArr
-    //        }else if usersLunch == 2{
-    //            let thirdHourEnding = getArr[1]
-    //            getArr[1] = lunchTimings[2][0]
-    //            var secondArr = ["",""]
-    //            secondArr[0] = lunchTimings[2][1]
-    //            secondArr[1] = thirdHourEnding
-    //            timeDict["3rd hour"] = getArr
-    //            timeDict["Third Lunch"] = lunchTimings[1]
-    //            timeDict["3rd hour (2)"] = secondArr
-    //        }else if usersLunch == 3{
-    //
-    //            // 4th lunch
-    //            //["11:45", "13:45"]
-    //
-    //            getArr[1] = lunchTimings[3][0]
-    //            timeDict["3rd hour"] = getArr
-    //            timeDict["4th Lunch"] = lunchTimings[3]
-    //    //        print(timeDict["3rd hour"] ?? "Didnt Work")
-    //        }
-    //
-    //    }
     
     
 }
