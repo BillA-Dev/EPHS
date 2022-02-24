@@ -32,40 +32,73 @@ struct LunchSelectionView: View {
         ZStack{
             
             if isShowing{
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center).foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255)).border(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.purple]), startPoint: .leading, endPoint: .trailing), width: 8).cornerRadius(8).transition(.slide).ignoresSafeArea().overlay{
+                RoundedRectangle(cornerRadius: 30)
+                    .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center)
+                    .foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
+                    .border(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.purple]), startPoint: .leading, endPoint: .trailing), width: 8)
+                    .cornerRadius(8)
+                    .transition(.slide)
+                    .ignoresSafeArea()
+                    .overlay{
+                        //OVERLAY, overlays stuff on top of it
                         VStack{
                             
                             VStack {
                                 HStack{
-                                
-                                   Text("Settings")
-                                            .font(.largeTitle)
-                                            .fontWeight(.bold).padding()
+                                    
+                                    Text("Settings")
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold).padding()
                                     Spacer()
                                     Button(action:{isShowing = false}){
                                         Image(systemName: "xmark").padding()
                                     }
                                     
-                                   
+                                    
                                 }
                             }.padding()
                             Spacer()
-                            Toggle(isOn: $isToggleOn) {
-                                Text("Enable Lunch").padding()
-                            }.padding()
+                            
+                            HStack {
+                                Spacer()
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                Toggle(isOn: $isToggleOn) {
+                                    Text("Enable Lunch").padding()
+                                }.padding()
+                                Spacer()
+                                
+                            }
                             
                             
                             Picker(selection: $pickedLunch, label: Text("Choose Lunch")) {
-                                Text("First Lunch").tag(0)
-                                Text("Second Lunch").tag(1)
-                                Text("Third Lunch").tag(2)
-                                Text("Fourth Lunch").tag(3)
-                            }.background(Color.white).disabled(!isToggleOn)
+                                Text("First Lunch")
+                                    .tag(0)
+                                Text("Second Lunch")
+                                    .tag(1)
+                                Text("Third Lunch")
+                                    .tag(2)
+                                Text("Fourth Lunch")
+                                    .tag(3)
+                            }.background(Color.white)
+                                .disabled(!isToggleOn)
+                            
                             Spacer()
-                            Toggle(isOn: $areNotificationOn) {
-                                Text("Enable Vibrations").padding()
-                            }.padding()
+                            
+                            HStack {
+                                Spacer()
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                Toggle(isOn: $areNotificationOn) {
+                                    Text("Enable Vibrations").padding()
+                                }.padding()
+                                Spacer()
+                                
+                            }
+                            
+                            
                             Spacer()
                             Button(action:{
                                 //Save selections here
@@ -73,8 +106,15 @@ struct LunchSelectionView: View {
                                 if isToggleOn{
                                     //user enabled lunch
                                     //lunch.timeDict
+                                    
                                     timeDict.resetLunch()
-                                    timeDict.addLunch(enterLunch: pickedLunch)
+                                    
+                                    //Mayeb this work, will have to test tomorrow.
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                        timeDict.addLunch(enterLunch: pickedLunch)
+                                    }
+                                    
+                                    
                                     
                                     print(timeDict.timeDict)
                                     
@@ -84,13 +124,13 @@ struct LunchSelectionView: View {
                                 }
                                 
                                 //Run function here
-    
+                                
                                 isShowing = false
                             }){
                                 Text("Save Selections").padding()
                             }.border(Color.teal, width: 1)//Add Background here
                             Spacer()
-
+                            
                         }
                         
                         
@@ -102,7 +142,7 @@ struct LunchSelectionView: View {
         
     }
     
-   
+    
 }
 
 struct LunchSelectionView_Previews: PreviewProvider {
