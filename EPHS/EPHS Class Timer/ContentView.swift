@@ -25,6 +25,13 @@ struct ContentView: View {
     //This might work IDEK
     //ADD A LUNCH FUNCTION
     
+    
+    @State var isNavigationBarHidden: Bool = true
+    
+    
+    @State var clickedBackToMainScreen = false
+    
+    
     @State var dayUpdater = "Monday"
     
     @State var showingSettings: Bool = false
@@ -54,6 +61,8 @@ struct ContentView: View {
         //Test this later
         
         
+            
+      
         ZStack{
             
             
@@ -62,12 +71,20 @@ struct ContentView: View {
             VStack{
                 
                 HStack{
+                    
                     Spacer()
+                    
+                    
+                    
                     Button(action:{
-                        
+                        clickedBackToMainScreen = true
                     }){
                         Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
+                    
+                    
+                    
+                    
                     Spacer()
                     if currentDay == "Tuesday"{
                         Text("\(currentDay) - Flex")
@@ -124,8 +141,11 @@ struct ContentView: View {
             LunchSelectionView(isShowing: $showingSettings)
             
             
-        }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek()}.environmentObject(timeDict)
+        }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek(); isNavigationBarHidden = true}
+        .environmentObject(timeDict)
         
+        
+    
         
     }
     
@@ -222,6 +242,10 @@ struct ContentView: View {
     
     func runTimer(){
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
+            
+//            if clickedBackToMainScreen == true{
+//                Timer.invalidate()
+//            }
             
             timeRemaing()
             
@@ -463,6 +487,9 @@ struct ContentView: View {
     
     
 }
+
+
+
 
 
 struct ContentView_Previews: PreviewProvider {

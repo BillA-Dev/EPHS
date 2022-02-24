@@ -15,15 +15,17 @@ struct SettingsScreen: View {
     //Add Appstorage when everything works.
     var body: some View {
         VStack{
+            HStack{
+                
+            }
             Text("Hello World")
         }
         .onAppear{
             hasPopUpBeenShown = true
         }
         .popover(isPresented: $hasPopUpBeenShown) {
-                    Text("Popover is Presented")
-                        .font(.largeTitle)
-                        .frame(width: 500, height: 500)
+                
+            //Add info here
         }
         
         

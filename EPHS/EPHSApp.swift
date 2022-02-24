@@ -13,7 +13,8 @@ struct EPHSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //LunchSelectionView(isOn: Binding.constant(false))
+            //SettingsScreen()
+            //mainScreen()
            
         }
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */; };
+		5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */; };
 		5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */; };
 		5C5A5E2127B54EF3000DE807 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2027B54EF3000DE807 /* ContentView.swift */; };
 		5C5A5E2327B54EF7000DE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2227B54EF7000DE807 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
+		5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		5C5A5E1B27B54EF3000DE807 /* EPHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EPHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPHSApp.swift; sourceTree = "<group>"; };
 		5C5A5E2027B54EF3000DE807 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C3CF55D27C7E7DA00E9EC22 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */,
+				5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
 		5C5A5E1227B54EF3000DE807 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */,
+				5C3CF55D27C7E7DA00E9EC22 /* MainScreen */,
 				5CA153FB27C7D3CD003E77F2 /* Choice Timer */,
 				5CA153FA27C7D3A4003E77F2 /* EPHS Class Timer */,
 				5C5A5E2227B54EF7000DE807 /* Assets.xcassets */,
@@ -170,7 +184,9 @@
 				5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */,
 				5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */,
 				5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */,
+				5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */,
 				5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */,
+				5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
