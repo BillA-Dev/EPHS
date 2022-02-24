@@ -27,8 +27,12 @@ struct LunchSelectionView: View {
                 RoundedRectangle(cornerRadius: 30)
                     //IF YOU CHANGE THE FRAME OR OBJECT, make sure the frame is within the center, the animation is based off that.
                     .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center)
-                    .foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
-                    .border(LinearGradient(gradient: Gradient(colors: [Color.teal, Color.purple]), startPoint: .leading, endPoint: .trailing), width: 8)
+                    //.foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
+                    //background to white
+                     .foregroundColor(Color.white)
+                    //changed the gradient colors to match timer
+                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color.red]), startPoint: .leading, endPoint: .trailing), width: 8)
+                    
                     .cornerRadius(8)
                     //KEEP THIS TRANSITION.
                     .transition(.slide)
@@ -42,7 +46,8 @@ struct LunchSelectionView: View {
                                     
                                     Text("Settings")
                                         .font(.largeTitle)
-                                        .fontWeight(.bold).padding()
+                                        .fontWeight(.bold)
+                                        .padding()
                                     Spacer()
                                     //Keep The button action the way it is
                                     Button(action:{isShowing = false}){
