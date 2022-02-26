@@ -25,16 +25,16 @@ struct LunchSelectionView: View {
             
             if isShowing{
                 RoundedRectangle(cornerRadius: 30)
-                    //IF YOU CHANGE THE FRAME OR OBJECT, make sure the frame is within the center, the animation is based off that.
+                //IF YOU CHANGE THE FRAME OR OBJECT, make sure the frame is within the center, the animation is based off that.
                     .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center)
-                    //.foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
-                    //background to white
-                     .foregroundColor(Color.white)
-                    //changed the gradient colors to match timer
+                //.foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
+                //background to white
+                    .foregroundColor(Color.white)
+                //changed the gradient colors to match timer
                     .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color.red]), startPoint: .leading, endPoint: .trailing), width: 8)
-                    
+                
                     .cornerRadius(8)
-                    //KEEP THIS TRANSITION.
+                //KEEP THIS TRANSITION.
                     .transition(.slide)
                     .ignoresSafeArea()
                     .overlay{
@@ -63,7 +63,9 @@ struct LunchSelectionView: View {
                                 Spacer()
                                 Circle()
                                     .frame(width: 50, height: 50)
-                                    .padding()
+                                    .padding().overlay{
+                                        Image("lunch").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
+                                    }
                                 //Keep to toggle binded variable
                                 Toggle(isOn: $isToggleOn) {
                                     Text("Enable Lunch").padding()
@@ -92,7 +94,9 @@ struct LunchSelectionView: View {
                                 Spacer()
                                 Circle()
                                     .frame(width: 50, height: 50)
-                                    .padding()
+                                    .padding().overlay{
+                                        Image("vibration").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
+                                    }
                                 //Keep toggle bindinded variable.
                                 Toggle(isOn: $areNotificationOn) {
                                     Text("Enable Vibrations").padding()
@@ -119,14 +123,14 @@ struct LunchSelectionView: View {
                                     
                                     
                                     
-                                    print(timeDict.timeDict)
+                                    //print(timeDict.timeDict)
                                     
                                 }else{
                                     
                                     timeDict.resetLunch()
                                 }
                                 
-                               
+                                
                                 isShowing = false
                             }){
                                 Text("Save Selections").padding()

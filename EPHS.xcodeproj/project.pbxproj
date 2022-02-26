@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */; };
 		5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */; };
+		5C3CF56327C9783900E9EC22 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56227C9783900E9EC22 /* ToDoList.swift */; };
 		5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */; };
 		5C5A5E2127B54EF3000DE807 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2027B54EF3000DE807 /* ContentView.swift */; };
 		5C5A5E2327B54EF7000DE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2227B54EF7000DE807 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		5C3CF56227C9783900E9EC22 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		5C5A5E1B27B54EF3000DE807 /* EPHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EPHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPHSApp.swift; sourceTree = "<group>"; };
 		5C5A5E2027B54EF3000DE807 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				5C5A5E2027B54EF3000DE807 /* ContentView.swift */,
 				5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */,
 				5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */,
+				5C3CF56227C9783900E9EC22 /* ToDoList.swift */,
 			);
 			path = "EPHS Class Timer";
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C5A5E2127B54EF3000DE807 /* ContentView.swift in Sources */,
+				5C3CF56327C9783900E9EC22 /* ToDoList.swift in Sources */,
 				5CA153F927C6A4A5003E77F2 /* dictionary.swift in Sources */,
 				5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */,
 				5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */,

@@ -55,8 +55,7 @@ class dictionary: ObservableObject{
                         "2nd hour": ["10:10", "11:08"],
                         "Core 2nd hour": ["11:08", "11:38"],
                         "Passing Time to 3rd hour": ["11:38", "11:45"],
-                        "3rd hour": ["11:45", "13:15"],
-                        "Core 3rd hour": ["13:15", "13:45"],
+                        "3rd hour": ["11:45", "13:45"],
                         "Passing Time to 4th hour": ["13:45", "13:53"],
                         "4th hour": ["13:53", "14:50"],
                         "Core 4th hour": ["14:50", "15:20"],
@@ -76,7 +75,7 @@ class dictionary: ObservableObject{
     }
     
     func addLunch(enterLunch usersLunch: Int){
-        
+        do{
         if Int(Calendar.current.component(.weekday, from: Date())) == 3{
             let lunchTimings: [[String]] = [["11:22", "11:52"],["11:52", "12:22"], ["12:22", "12:52"], ["12:52", "13:22"]]
             var getArr =  timeDict["3rd hour"]!
@@ -170,6 +169,9 @@ class dictionary: ObservableObject{
             }
         }
         
+        }catch{
+            print("thisFunctionWentWrong")
+        }
     }
     
 }

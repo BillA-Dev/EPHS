@@ -24,7 +24,7 @@ struct ProgressBar: View {
                 
                 Circle()
                     .trim(from: 0.0, to: CGFloat(min(progress/timeInTheClass, 1)))
-                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: .round, lineJoin: .round))
+                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: .square, lineJoin: .round))
                     .padding()
                     .rotationEffect(Angle(degrees: 270))
                     .animation(.linear, value: progress)

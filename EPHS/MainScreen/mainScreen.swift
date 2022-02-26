@@ -6,69 +6,66 @@
 //
 
 import SwiftUI
-class Screens: ObservableObject{
-    @Published var EPHS_Timer = ContentView()
-    @Published var homeScreen = mainScreen()
-    //Add choice timer here
-}
-struct mainScreen: View {
-    @State var clicked = false
-    var body: some View {
-        
-        NavigationView {
-       
-        VStack{
-            
-            Text("EPHS APP")
-            Spacer()
-//            Button(action:{
-//                clicked = true
-//            }){
-//                Text("EPHS Timer")
-//            }
-            NavigationLink(destination: ContentView()) {
-                                Text("EPHS Timer")
-            }
-            
-            
-         
-        }
-            
-            
-        
-        }
-    }
+
+
+class getBinding: ObservableObject{
+    @Published var isTimerShowing = false
+    
 }
 
-//extension View {
-//    /// Navigate to a new view.
-//    /// - Parameters:
-//    ///   - view: View to navigate to.
-//    ///   - binding: Only navigates when this condition is `true`.
-//    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
-//        NavigationView {
-//            ZStack {
-//                self
-//                    .navigationBarTitle("")
-//                    .navigationBarHidden(true)
-//
-//                NavigationLink(
-//                    destination: view
-//                        .navigationBarTitle("")
-//                        .navigationBarHidden(true),
-//                    isActive: binding
-//                ) {
-//                    EmptyView()
-//                }
-//            }
-//        }
-//        .navigationViewStyle(.stack)
-//    }
-//}
+
+struct mainScreen: View {
+    
+    @Binding var isShowing: Bool
+    
+    @State var clickedTimer = false
+    
+   
+    
+    var body: some View {
+        
+        
+        
+        
+        
+        if isShowing {
+        
+        VStack{
+
+            if clickedTimer == false{
+            Text("EPHS APP")
+
+
+            Spacer()
+
+            Button(action:{
+                clickedTimer = true
+               
+                
+            }){
+                Text("EPHS Timer")
+            }
+          
+            Spacer()
+            }
+
+
+        }
+        
+
+
+    
+        }
+        
+        
+    
+}
+    
+}
 
 
 struct mainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        mainScreen()
+        mainScreen(isShowing: Binding.constant(true))
     }
 }

@@ -14,7 +14,8 @@ struct EPHSApp: App {
         WindowGroup {
             ContentView()
             //SettingsScreen()
-            //mainScreen()
+            //mainScreen(isShowing: Binding.constant(true))
+            //ToDoList()
            
         }
     }

@@ -7,6 +7,14 @@
 
 
 
+
+//IF at 90% than turn line cap to .square.
+//FIX crash - navigation is so annoying
+//CUstom coller picker
+//
+
+
+
 import SwiftUI
 import Foundation
 import AudioToolbox
@@ -17,6 +25,9 @@ import AudioToolbox
 
 //Should work, Idek;
 
+
+
+//Confetti, lineCap .straight.
 
 
 
@@ -31,6 +42,9 @@ struct ContentView: View {
     
     @State var clickedBackToMainScreen = false
     
+    
+    
+    @State var isToDoListShowing = false
     
     @State var dayUpdater = "Monday"
     
@@ -61,8 +75,8 @@ struct ContentView: View {
         //Test this later
         
         
-            
-      
+        
+        
         ZStack{
             
             
@@ -72,19 +86,17 @@ struct ContentView: View {
                 
                 HStack{
                     
+                    
                     Spacer()
                     
                     
-                    
                     Button(action:{
-                        clickedBackToMainScreen = true
+                        
                     }){
                         Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
                     
-                    
-                    
-                    
+                  
                     Spacer()
                     if currentDay == "Tuesday"{
                         Text("\(currentDay) - Flex")
@@ -135,6 +147,12 @@ struct ContentView: View {
                 
                 Spacer()
                 
+                Button(action:{
+                    isToDoListShowing = true
+                }){
+                    Text("To Do List")
+                }
+                
             }
             
             
@@ -145,7 +163,11 @@ struct ContentView: View {
         .environmentObject(timeDict)
         
         
-    
+        //POP OVER CODE
+        .popover(isPresented: $isToDoListShowing) {
+            ToDoList(currentHour: $whatHour)
+        }
+        
         
     }
     
@@ -173,8 +195,7 @@ struct ContentView: View {
                                  "2nd hour": ["10:10", "11:08"],
                                  "Core 2nd hour": ["11:08", "11:38"],
                                  "Passing Time to 3rd hour": ["11:38", "11:45"],
-                                 "3rd hour": ["11:45", "13:15"],
-                                 "Core 3rd hour": ["13:15", "13:45"],
+                                 "3rd hour": ["11:45", "13:45"],
                                  "Passing Time to 4th hour": ["13:45", "13:53"],
                                  "4th hour": ["13:53", "14:50"],
                                  "Core 4th hour": ["14:50", "15:20"],
@@ -243,14 +264,16 @@ struct ContentView: View {
     func runTimer(){
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
             
-//            if clickedBackToMainScreen == true{
-//                Timer.invalidate()
-//            }
+            if clickedBackToMainScreen == true{
+                Timer.invalidate()
+            }
             
             timeRemaing()
             
             
-            print(timeDict.timeDict)
+           // print(timeDict.timeDict)
+            
+            //print(timeDict.timeDict)
             
             
             if dayUpdater != getDayOfTheWeek(){
@@ -269,7 +292,7 @@ struct ContentView: View {
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
             
-           
+            
             
             
         }
@@ -338,7 +361,7 @@ struct ContentView: View {
         //THIS IS FOR PROGRESS BAR DENOMINATOR
         //THIS WILL BE A BINDING AND STATE
         
-        let arr: [String] = timeDict.timeDict[whatHour] ?? [""] //OR !
+        let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
         
         let timeOne = arr[0]
         let timeTwo = arr[1]
@@ -418,6 +441,7 @@ struct ContentView: View {
     func timeRemaing(){
         
         //THIS IS FOR THE NUMERATOR
+        
         let today = Date()
         
         let hours   = Float((Calendar.current.component(.hour, from: today)))
@@ -428,8 +452,32 @@ struct ContentView: View {
             
             let currentTime = (hours*60) + minutes + (seconds/60)
             
-            let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
-            let timeTwo = arr[1]
+            
+            //Need to add Lunch before
+            //This is indeox out of rang eeroo
+            
+            var arr: [String] = timeDict.timeDict[whatHour] ?? [""]
+            //            if arr == [""]{
+            //                timeDict.checkSave()
+            //            }
+            
+            
+            var timeTwo = ""
+            
+            //print(arr)
+            
+            
+            //FIXED APP CRASHING
+            if arr[0] == ""{
+                whatHourCurrently()
+                arr = timeDict.timeDict[whatHour] ?? [""]
+                timeTwo = arr[1]
+            
+                
+            }else{
+                timeTwo = arr[1]
+            }
+            
             
             let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
             
@@ -437,6 +485,7 @@ struct ContentView: View {
             progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))
             
             formatTime(minutes: abs(secondTime-currentTime))
+            
         }else{
             
             let arr: [String] = timeDict.timeDict[whatHour] ?? [""]
