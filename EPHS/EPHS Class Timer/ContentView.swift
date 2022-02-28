@@ -14,6 +14,9 @@
 //
 
 
+//Fix Vibrations running OnAppear()
+
+
 
 import SwiftUI
 import Foundation
@@ -151,7 +154,9 @@ struct ContentView: View {
                     isToDoListShowing = true
                 }){
                     Text("To Do List")
-                }
+                }.padding()
+                //Text("Temporary Text: \(progressValue)")
+                
                 
             }
             
@@ -453,8 +458,6 @@ struct ContentView: View {
             let currentTime = (hours*60) + minutes + (seconds/60)
             
             
-            //Need to add Lunch before
-            //This is indeox out of rang eeroo
             
             var arr: [String] = timeDict.timeDict[whatHour] ?? [""]
             //            if arr == [""]{
@@ -481,8 +484,12 @@ struct ContentView: View {
             
             let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
             
+            print("TimeInTheHour: \(timeInTheHour)")
+            print("SecondTime: \(secondTime)")
+            print("CurrentTime: \(currentTime)")
+            print(Float(abs(timeInTheHour - Float(abs(secondTime-currentTime)))))
             
-            progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))
+            progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
             
             formatTime(minutes: abs(secondTime-currentTime))
             
@@ -502,7 +509,7 @@ struct ContentView: View {
                 let minutes = Float(endTime[endTime.index(after: endTime.firstIndex(of: ":")!)...])!
                 time+=hour+minutes
                 formatTime(minutes: time)
-                progressValue = Float(abs(timeInTheHour-Float(time)))
+                progressValue = Float(abs(timeInTheHour-Float(time)))/timeInTheHour
                 
                 
             }else{
@@ -515,7 +522,7 @@ struct ContentView: View {
                 let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
                 
                 
-                progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))
+                progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
                 
                 formatTime(minutes: abs(secondTime-currentTime))
             }
