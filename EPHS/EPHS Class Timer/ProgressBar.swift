@@ -11,7 +11,9 @@ struct ProgressBar: View {
     @Binding var timeInTheClass: Float
     
     var body: some View {
+        
         ZStack {
+            
             Circle()
                 .stroke(lineWidth: 30)
                 .opacity(0.3)
@@ -23,8 +25,8 @@ struct ProgressBar: View {
                 //MASK ADD COLOR TO FORGROUND OFF ALL OBJECTS IN HERE
                 
                 Circle()
-                    .trim(from: 0.0, to: CGFloat(min(progress/timeInTheClass, 1)))
-                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: .square, lineJoin: .round))
+                    .trim(from: 0.0, to: CGFloat(min(progress, 1)))
+                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: (progress >= 0.9 ? .square: .round), lineJoin: .round))
                     .padding()
                     .rotationEffect(Angle(degrees: 270))
                     .animation(.linear, value: progress)

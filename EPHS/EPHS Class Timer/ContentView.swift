@@ -130,6 +130,7 @@ struct ContentView: View {
                 
                 
                 
+                
                 ProgressBar(progress: $progressValue, timeInTheClass: $timeInTheHour).overlay{
                     
                     VStack {
@@ -484,10 +485,10 @@ struct ContentView: View {
             
             let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
             
-            print("TimeInTheHour: \(timeInTheHour)")
-            print("SecondTime: \(secondTime)")
-            print("CurrentTime: \(currentTime)")
-            print(Float(abs(timeInTheHour - Float(abs(secondTime-currentTime)))))
+//            print("TimeInTheHour: \(timeInTheHour)")
+//            print("SecondTime: \(secondTime)")
+//            print("CurrentTime: \(currentTime)")
+//            print(Float(abs(timeInTheHour - Float(abs(secondTime-currentTime)))))
             
             progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
             
