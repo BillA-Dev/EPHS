@@ -1,9 +1,14 @@
 # EPHS Timer
+Version 0.2 Build 2
+  - Added To Do list
+  - Changed lunch selection UI color
+  - Fix Progress bar overlapping
+
 
 Version 0.2 Build 1
   - Added Lunch Selection screen
   - Added notification; vibration
-  - Programmed each lunch first; fourth
+  - Programmed each lunch first to fourth
 
 Version 0.1 Build 2
   - Made the progress bar update via second
