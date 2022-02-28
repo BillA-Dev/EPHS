@@ -10,6 +10,9 @@ import SwiftUI
 
 
 class dictionary: ObservableObject{
+    
+    
+    
     @Published var timeDict =  ["1st hour": ["8:35", "10:03"],
                                 "Passing Time 1st hour": ["10:03", "10:10"],
                                 "2nd hour": ["10:10", "11:38"],

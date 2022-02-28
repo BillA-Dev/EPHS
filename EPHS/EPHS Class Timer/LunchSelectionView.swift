@@ -18,10 +18,14 @@ struct LunchSelectionView: View {
     @AppStorage("areNotificationsOn") var areNotificationOn = false
     @AppStorage("pickedLunch") private var pickedLunch = 0
     
+    //gets var from the enviorment.
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     
     var body: some View {
         ZStack{
+            
+            //Have to figure this out
             
             if isShowing{
                 RoundedRectangle(cornerRadius: 30)
@@ -29,9 +33,11 @@ struct LunchSelectionView: View {
                     .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center)
                 //.foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
                 //background to white
-                    .foregroundColor(Color.white)
+                    .foregroundColor(colorScheme == .dark ? Color.black.opacity(0.9) : Color.white.opacity(0.9))
                 //changed the gradient colors to match timer
-                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color.red]), startPoint: .leading, endPoint: .trailing), width: 8)
+                
+                //Turn this .bootom to .top 
+                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color.red]), startPoint: .bottom, endPoint: .top), width: 8)
                 
                     .cornerRadius(8)
                 //KEEP THIS TRANSITION.
@@ -64,16 +70,18 @@ struct LunchSelectionView: View {
                                 Circle()
                                     .frame(width: 50, height: 50)
                                     .padding().overlay{
-                                        Image("lunch").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
+                                        Image(colorScheme == .light ? "lunch": "lunchb").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
                                     }
                                 //Keep to toggle binded variable
                                 Toggle(isOn: $isToggleOn) {
                                     Text("Enable Lunch").padding()
-                                }.padding()
+                                }.padding().tint(Color.red)
                                 Spacer()
                                 
                             }
                             
+                            
+                            HStack{
                             
                             //Keep the picker text, and tags
                             Picker(selection: $pickedLunch, label: Text("Choose Lunch")) {
@@ -85,8 +93,10 @@ struct LunchSelectionView: View {
                                     .tag(2)
                                 Text("Fourth Lunch")
                                     .tag(3)
-                            }.background(Color.white)
+                            }.background(colorScheme == .light ? Color.white: Color.black)
                                 .disabled(!isToggleOn)
+                                Image(systemName: "arrow.down")
+                            }.padding().border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top))
                             
                             Spacer()
                             
@@ -95,12 +105,12 @@ struct LunchSelectionView: View {
                                 Circle()
                                     .frame(width: 50, height: 50)
                                     .padding().overlay{
-                                        Image("vibration").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
+                                        Image(colorScheme == .light ? "vibration": "vibrationb").resizable().frame(width: 50/1.5, height: 50/1.5).aspectRatio(contentMode: .fit)
                                     }
                                 //Keep toggle bindinded variable.
                                 Toggle(isOn: $areNotificationOn) {
                                     Text("Enable Vibrations").padding()
-                                }.padding()
+                                }.padding().tint(Color.red)
                                 Spacer()
                                 
                             }
@@ -134,7 +144,7 @@ struct LunchSelectionView: View {
                                 isShowing = false
                             }){
                                 Text("Save Selections").padding()
-                            }.border(Color.teal, width: 1)//Add Background here
+                            }.border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top))//Add Background here
                             Spacer()
                             
                         }

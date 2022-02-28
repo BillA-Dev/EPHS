@@ -36,6 +36,7 @@ import AudioToolbox
 
 struct ContentView: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     //This might work IDEK
     //ADD A LUNCH FUNCTION
     
@@ -96,7 +97,7 @@ struct ContentView: View {
                     Button(action:{
                         
                     }){
-                        Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0)
+                        Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0).foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                     }.padding()
                     
                   
@@ -491,7 +492,7 @@ struct ContentView: View {
 //            print(Float(abs(timeInTheHour - Float(abs(secondTime-currentTime)))))
             
             progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
-            
+            print(progressValue)
             formatTime(minutes: abs(secondTime-currentTime))
             
         }else{

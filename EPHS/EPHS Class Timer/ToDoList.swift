@@ -15,6 +15,12 @@ struct ToDoList: View {
     
     @Binding var currentHour: String
     
+    @State var pickedHour = 0
+    
+    
+    @State var toDoDict: [String: [String]] = [:]//The arr string is ListOfitems
+    
+    
     
     //Create a dictionary per hour with the listOfItems
     
@@ -38,7 +44,18 @@ struct ToDoList: View {
             HStack{
                 
                 
-                Text("To Do list: \(currentHour)").padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                //Text("To Do list: \(currentHour)").padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                Picker(selection: $pickedHour, label: Text("Choose Lunch")) {
+                    Text("First Hour")
+                        .tag(0)
+                    Text("Second Hour")
+                        .tag(1)
+                    Text("Third Hour")
+                        .tag(2)
+                    Text("Fourth Hour")
+                        .tag(3)
+                }.background(Color.white).padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    
                 Spacer()
                 Button(action:{
                     //Remove all elements
