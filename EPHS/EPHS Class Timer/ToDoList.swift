@@ -32,20 +32,7 @@ struct ToDoList: View {
     @State var originalPickedLunch: Int = 0
     
     
-    //Create a dictionary per hour with the listOfItems
-    
-    
-    //The code gets the hour in dictionary and then gets the array.
-    //IF there is no hour; it creates a new one.
-    //OR CREATE A PRESET DICT, and remove this pop up from running when lunch starts ORRR 3rd lunch only shows when this runs. AIGHT thats the thing I might do.
-    
-    //L
-    
-    //@State var savedDictionary: [String: [Items]] = [:]
-    //First lets try saving the list of items.
-    
-    //Userdefualts.standard.date()
-    
+   
     var body: some View {
         
         VStack{
@@ -56,14 +43,7 @@ struct ToDoList: View {
             HStack{
                 
                 
-                //Text("To Do list: \(currentHour)").padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
-//                Picker("", selection: $pickedHour){
-//                    ForEach(Array(toDoDict.keys), id:\.self){ hours in
-//                        Text(hours)
-//                    }
-                
-
-//                }.labelsHidden().padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+            
                   Picker(selection: $pickedHour, label: Text("Choose Lunch")) {
                                     Text("First Hour")
                                         .tag(0)
@@ -117,15 +97,11 @@ struct ToDoList: View {
                 }.padding()
             }
         }.onDisappear{
-            //IF already set dont set again maybe?\
-            
-            //Turn dict to JSON then save to userDefualts
-            //https://stackoverflow.com/questions/61435230/store-dictionary-in-userdefaults'
             
             
-//            toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"] = listOfItems
-//            print(toDoDict)
-//
+            //Maybe make a better save system: Maybe in documents folder?
+            //https://developer.apple.com/tutorials/app-dev-training/persisting-data
+
             var data: Data?
             do{
                 data = try JSONEncoder().encode(toDoDict)
@@ -135,21 +111,14 @@ struct ToDoList: View {
             UserDefaults.standard.set(data, forKey: "dict")
             
         }.onAppear{
-            //listOfItems = UserDefaults.standard.stringArray(forKey: "listOfItems") ?? []
-//            if pickedHour == 0 || pickedHour == 1{
-//                listOfItems = toDoDict[pickedHour == 0 ? "First Hour" : "Second Hour"]!
-//            }else{
-//                listOfItems = toDoDict[pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!
-//            }
-            
-            //This is not getting first hour
+
             
             
             if let data = UserDefaults.standard.data(forKey: "dict") {
             do{
 
                 toDoDict = try JSONDecoder().decode([String: [listsss]].self, from: data)
-               //It gets the twoDODict; I just cant make it update AFJASKLJDKLASJDKLAS print(toDoDict)
+              
             }catch{
                 print("Cannot get value")
             }
@@ -160,32 +129,13 @@ struct ToDoList: View {
             print(toDoDict)
 
 
-            //originalPickedLunch = pickedHour
-
-//
-//
+   
             
         }
             
-//        }.onChange(of: pickedHour){ x in
-//
-//            //Save current list.
-//
-//
-////            toDoDict[originalPickedLunch == 0 ? "First Hour" : originalPickedLunch == 1 ? "Second Hour" : originalPickedLunch == 2 ? "Third Hour" : "Fourth Hour"] = listOfItems
-////
-////            //This is working.
-////
-////
-////            if pickedHour == 0 || pickedHour == 1{
-////                listOfItems = toDoDict[pickedHour == 0 ? "First Hour" : "Second Hour"]!
-////            }else{
-////                listOfItems = toDoDict[pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!
-////            }
-////            originalPickedLunch = pickedHour
-////
-//
-//        }
+
+
+
         
         
         
@@ -199,12 +149,7 @@ struct ToDoList: View {
 
 
 
-//String, CaseIterable, Identifiable, Codable {
 
-//struct Items: Identifiable, Codable{
-//    let toDoItem: String
-//    let id = UUID()
-//}
 
 struct Items: Identifiable{
     let id = UUID()
