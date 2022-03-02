@@ -14,11 +14,20 @@ struct LunchSelectionView: View {
     @Binding var isShowing: Bool
     
     
+    @Binding var opacity: Double
+    
+    
+    
     @AppStorage("isToggleOn") var isToggleOn = false
     @AppStorage("areNotificationsOn") var areNotificationOn = false
     @AppStorage("pickedLunch") private var pickedLunch = 0
     
+    
+    
+
     //gets var from the enviorment.
+    
+    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     
@@ -33,15 +42,21 @@ struct LunchSelectionView: View {
                     .frame(width: UIScreen.main.bounds.width/1.02, height: UIScreen.main.bounds.height/2, alignment: .center)
                 //.foregroundColor(Color(red: 250/255, green: 249/255, blue: 246/255))
                 //background to white
-                    .foregroundColor(colorScheme == .dark ? Color.black.opacity(0.9) : Color.white.opacity(0.9))
+                    .foregroundColor(colorScheme == .dark ? Color.black.opacity(opacity) : Color.white.opacity(opacity))
                 //changed the gradient colors to match timer
                 
-                //Turn this .bootom to .top 
-                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color.red]), startPoint: .bottom, endPoint: .top), width: 8)
+                //Turn this .bootom to .top
+                //COlor.red
+                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color(red: 161/255, green: 32/255, blue: 22/255)]), startPoint: .bottom, endPoint: .top), width: 8)
                 
                     .cornerRadius(8)
                 //KEEP THIS TRANSITION.
                     .transition(.slide)
+                    .animation(.easeInOut, value: opacity)
+                   
+                        
+                        
+                    
                     .ignoresSafeArea()
                     .overlay{
                         //OVERLAY, overlays stuff on top of it
@@ -156,6 +171,7 @@ struct LunchSelectionView: View {
             
             //Keep this animation
         }.animation(.easeInOut(duration: 0.8), value: isShowing)
+           
         
     }
     
@@ -164,7 +180,7 @@ struct LunchSelectionView: View {
 
 struct LunchSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LunchSelectionView(isShowing: Binding.constant(true))
+        LunchSelectionView(isShowing: Binding.constant(true), opacity: Binding.constant(1))
     }
 }
 

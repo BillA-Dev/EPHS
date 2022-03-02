@@ -72,7 +72,7 @@ struct ContentView: View {
     
     @State var currentDay: String = "Monday-RegularDay"
     
-    
+    @State var opac: Double = 0.9
     
     var body: some View {
         
@@ -120,6 +120,20 @@ struct ContentView: View {
                         showingSettings.toggle()
                         //If false turns it to true
                         //if ture turns it to false
+                        if showingSettings == false{
+                            
+                            opac = 0.5
+                        
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                            if showingSettings == true{
+                                opac = 1
+                            }
+                        }
+                        opac = 0.5
+                        
+                        
+                        
                     }){
                         Image(systemName: "gearshape.fill").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
@@ -163,7 +177,7 @@ struct ContentView: View {
             }
             
             
-            LunchSelectionView(isShowing: $showingSettings)
+            LunchSelectionView(isShowing: $showingSettings, opacity: $opac)
             
             
         }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek(); isNavigationBarHidden = true}
@@ -222,10 +236,7 @@ struct ContentView: View {
         return dates[day]!
     }
     
-    func lunchSetter(){
-        //gets user defualts
-        //runs the lunch function here
-    }
+
     
     func resetTimeDict(){
         //This is for when the user disables lunch
@@ -261,7 +272,7 @@ struct ContentView: View {
         
         timeTheClassLastFor()
         //Run lunch when app starts
-        lunchSetter()
+        
         runTimer()
         
         //Run LunchApp On Start
@@ -492,7 +503,7 @@ struct ContentView: View {
 //            print(Float(abs(timeInTheHour - Float(abs(secondTime-currentTime)))))
             
             progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
-            print(progressValue)
+            //print(progressValue)
             formatTime(minutes: abs(secondTime-currentTime))
             
         }else{
