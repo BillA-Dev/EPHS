@@ -1,5 +1,11 @@
 # EPHS Timer
 Version 0.2 Build 2
+  - Created toDoList View
+  - Updated Lunch selection view
+  - Added sepereate hour in ToDoList
+  - Added a save function for to do list
+  
+Version 0.2 Build 2
   - Added To Do list
   - Changed lunch selection UI color
   - Fix Progress bar overlapping
