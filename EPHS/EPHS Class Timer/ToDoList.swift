@@ -4,7 +4,6 @@
 //
 //  Created by 90310148 on 2/25/22.
 //
-
 import SwiftUI
 
 
@@ -17,6 +16,7 @@ struct listsss: Codable, Identifiable{
 
 struct ToDoList: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var textFieldText = ""
     //Probably App Storage
     @State var listOfItems: [String] = []
@@ -45,6 +45,8 @@ struct ToDoList: View {
                 
             
                   Picker(selection: $pickedHour, label: Text("Choose Lunch")) {
+                      
+                      //add array here
                                     Text("First Hour")
                                         .tag(0)
                                     Text("Second Hour")
@@ -53,7 +55,7 @@ struct ToDoList: View {
                                         .tag(2)
                                     Text("Fourth Hour")
                                         .tag(3)
-                  }.background(Color.white).padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
+                  }.background(Color.white.opacity(0)).padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
                 Spacer()
                 Button(action:{
@@ -101,7 +103,6 @@ struct ToDoList: View {
             
             //Maybe make a better save system: Maybe in documents folder?
             //https://developer.apple.com/tutorials/app-dev-training/persisting-data
-
             var data: Data?
             do{
                 data = try JSONEncoder().encode(toDoDict)

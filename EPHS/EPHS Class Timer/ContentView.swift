@@ -95,9 +95,9 @@ struct ContentView: View {
                     
                     
                     Button(action:{
-                        
+                        isToDoListShowing = true
                     }){
-                        Image(systemName: "arrowshape.turn.up.backward.fill").resizable().frame(width: 25.0, height: 25.0).foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                        Image(systemName: "square.and.pencil").resizable().frame(width: 25.0, height: 25.0)
                     }.padding()
                     
                   
@@ -166,11 +166,11 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button(action:{
-                    isToDoListShowing = true
-                }){
-                    Text("To Do List")
-                }.padding()
+//                Button(action:{
+//                    isToDoListShowing = true
+//                }){
+//                    Text("To Do List")
+//                }.padding()
                 //Text("Temporary Text: \(progressValue)")
                 
                 

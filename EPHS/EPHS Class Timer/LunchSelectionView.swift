@@ -47,7 +47,7 @@ struct LunchSelectionView: View {
                 
                 //Turn this .bootom to .top
                 //COlor.red
-                    .border(LinearGradient(gradient: Gradient(colors: [Color.black, Color(red: 161/255, green: 32/255, blue: 22/255)]), startPoint: .bottom, endPoint: .top), width: 8)
+                    .border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white: Color.black, Color(red: 161/255, green: 32/255, blue: 22/255)]), startPoint: .bottom, endPoint: .top), width: 8)
                 
                     .cornerRadius(8)
                 //KEEP THIS TRANSITION.
@@ -159,7 +159,7 @@ struct LunchSelectionView: View {
                                 isShowing = false
                             }){
                                 Text("Save Selections").padding()
-                            }.border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top))//Add Background here
+                            }.border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top)).padding()//Add Background here
                             Spacer()
                             
                         }

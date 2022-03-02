@@ -10,6 +10,7 @@ struct ProgressBar: View {
     @Binding var progress: Float
     @Binding var timeInTheClass: Float
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var body: some View {
         
         ZStack {
@@ -20,7 +21,7 @@ struct ProgressBar: View {
                 .padding()
                 .foregroundColor(Color.red.opacity(0.5))
             
-            LinearGradient(gradient: Gradient(colors: [Color.red, Color.black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? [Color(red: 173/255, green: 14/255, blue: 14/255), colorScheme == .dark ? Color(red: 205/255, green: 149/255, blue: 149/255): Color.black] : [Color.red, Color.black]), startPoint: .top, endPoint: .bottom)
             .mask(
                 //MASK ADD COLOR TO FORGROUND OFF ALL OBJECTS IN HERE
                 
