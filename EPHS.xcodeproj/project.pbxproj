@@ -18,7 +18,38 @@
 		5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */; };
 		5CA153F927C6A4A5003E77F2 /* dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153F827C6A4A5003E77F2 /* dictionary.swift */; };
 		5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */; };
+		5CABEF6627D1212C00ED78DD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6527D1212C00ED78DD /* WidgetKit.framework */; };
+		5CABEF6827D1212C00ED78DD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6727D1212C00ED78DD /* SwiftUI.framework */; };
+		5CABEF6B27D1212C00ED78DD /* ClassTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */; };
+		5CABEF6E27D1213100ED78DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABEF6D27D1213100ED78DD /* Assets.xcassets */; };
+		5CABEF7027D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */; };
+		5CABEF7127D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */; };
+		5CABEF7427D1213100ED78DD /* ClassTimerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CABEF7227D1213100ED78DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C5A5E1327B54EF3000DE807 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CABEF6227D1212C00ED78DD;
+			remoteInfo = ClassTimerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5CABEF7527D1213100ED78DD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5CABEF7427D1213100ED78DD /* ClassTimerWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
@@ -33,6 +64,13 @@
 		5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchSelectionView.swift; sourceTree = "<group>"; };
 		5CA153F827C6A4A5003E77F2 /* dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictionary.swift; sourceTree = "<group>"; };
 		5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClassTimerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CABEF6527D1212C00ED78DD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5CABEF6727D1212C00ED78DD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimerWidget.swift; sourceTree = "<group>"; };
+		5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ClassTimerWidget.intentdefinition; sourceTree = "<group>"; };
+		5CABEF6D27D1213100ED78DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CABEF6F27D1213100ED78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +78,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CABEF6027D1212C00ED78DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CABEF6827D1212C00ED78DD /* SwiftUI.framework in Frameworks */,
+				5CABEF6627D1212C00ED78DD /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				5C5A5E1D27B54EF3000DE807 /* EPHS */,
+				5CABEF6927D1212C00ED78DD /* ClassTimerWidget */,
+				5CABEF6427D1212C00ED78DD /* Frameworks */,
 				5C5A5E1C27B54EF3000DE807 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				5C5A5E1B27B54EF3000DE807 /* EPHS.app */,
+				5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +162,26 @@
 			path = "Choice Timer";
 			sourceTree = "<group>";
 		};
+		5CABEF6427D1212C00ED78DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CABEF6527D1212C00ED78DD /* WidgetKit.framework */,
+				5CABEF6727D1212C00ED78DD /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CABEF6927D1212C00ED78DD /* ClassTimerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */,
+				5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */,
+				5CABEF6D27D1213100ED78DD /* Assets.xcassets */,
+				5CABEF6F27D1213100ED78DD /* Info.plist */,
+			);
+			path = ClassTimerWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,15 +192,34 @@
 				5C5A5E1727B54EF3000DE807 /* Sources */,
 				5C5A5E1827B54EF3000DE807 /* Frameworks */,
 				5C5A5E1927B54EF3000DE807 /* Resources */,
+				5CABEF7527D1213100ED78DD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5CABEF7327D1213100ED78DD /* PBXTargetDependency */,
 			);
 			name = EPHS;
 			productName = EPHS;
 			productReference = 5C5A5E1B27B54EF3000DE807 /* EPHS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CABEF7827D1213200ED78DD /* Build configuration list for PBXNativeTarget "ClassTimerWidgetExtension" */;
+			buildPhases = (
+				5CABEF5F27D1212C00ED78DD /* Sources */,
+				5CABEF6027D1212C00ED78DD /* Frameworks */,
+				5CABEF6127D1212C00ED78DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClassTimerWidgetExtension;
+			productName = ClassTimerWidgetExtension;
+			productReference = 5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -143,6 +232,9 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					5C5A5E1A27B54EF3000DE807 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					5CABEF6227D1212C00ED78DD = {
 						CreatedOnToolsVersion = 13.2;
 					};
 				};
@@ -161,6 +253,7 @@
 			projectRoot = "";
 			targets = (
 				5C5A5E1A27B54EF3000DE807 /* EPHS */,
+				5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -172,6 +265,14 @@
 			files = (
 				5C5A5E2627B54EF7000DE807 /* Preview Assets.xcassets in Resources */,
 				5C5A5E2327B54EF7000DE807 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CABEF6127D1212C00ED78DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CABEF6E27D1213100ED78DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,10 +292,28 @@
 				5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */,
 				5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */,
 				5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */,
+				5CABEF7127D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CABEF5F27D1212C00ED78DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CABEF6B27D1212C00ED78DD /* ClassTimerWidget.swift in Sources */,
+				5CABEF7027D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CABEF7327D1213100ED78DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */;
+			targetProxy = 5CABEF7227D1213100ED78DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5C5A5E2727B54EF7000DE807 /* Debug */ = {
@@ -316,6 +435,7 @@
 		5C5A5E2A27B54EF7000DE807 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +465,7 @@
 		5C5A5E2B27B54EF7000DE807 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +492,60 @@
 			};
 			name = Release;
 		};
+		5CABEF7627D1213100ED78DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClassTimerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClassTimerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.classtimer.ClassTimerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CABEF7727D1213100ED78DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClassTimerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClassTimerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.classtimer.ClassTimerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -388,6 +563,15 @@
 			buildConfigurations = (
 				5C5A5E2A27B54EF7000DE807 /* Debug */,
 				5C5A5E2B27B54EF7000DE807 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CABEF7827D1213200ED78DD /* Build configuration list for PBXNativeTarget "ClassTimerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CABEF7627D1213100ED78DD /* Debug */,
+				5CABEF7727D1213100ED78DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

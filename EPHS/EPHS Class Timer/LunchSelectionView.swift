@@ -108,7 +108,7 @@ struct LunchSelectionView: View {
                                     .tag(2)
                                 Text("Fourth Lunch")
                                     .tag(3)
-                            }.background(colorScheme == .light ? Color.white: Color.black)
+                            }.background(colorScheme == .light ? Color.white.opacity(0): Color.black.opacity(0))//This opactiy might be off
                                 .disabled(!isToggleOn)
                                 Image(systemName: "arrow.down")
                             }.padding().border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top))

@@ -72,16 +72,28 @@ struct ToDoList: View {
                 
             }
             //UNDERSTAND HOW THE ID: \.self work
-            List(){
+            
+            //Complete section header.
+            List{
                 ForEach(toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!){dictText in
                     
-                    Text(dictText.item)
+                    //ADD A BUTTON
+                  
+                        Text(dictText.item)
+                    
+                    
+                    
+                //Understand how the OnDelete function works
+                }.onDelete(perform: onDelete).onTapGesture(count: 2){
+                    print("Double Clicked")
                 }
+                
                 
                 //On Tap Gesture here. Have an image; correct and wrong
                 
-            }.onTapGesture(count: 2){
-                
+            }.toolbar{
+                //see if this works
+                EditButton()
             }
             
             HStack{
@@ -143,7 +155,9 @@ struct ToDoList: View {
     }
     
     
-    
+    func onDelete(at offsets: IndexSet){
+        toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!.remove(atOffsets: offsets)
+    }
     
     
 }
