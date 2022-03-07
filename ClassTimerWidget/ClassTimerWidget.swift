@@ -5,7 +5,7 @@
 //  Created by 90310148 on 3/3/22.
 //https://stackoverflow.com/questions/65670736/how-to-refresh-multiple-timers-in-widget-ios14
 
-
+//I can access userDefaults now.
 import WidgetKit
 import SwiftUI
 import Intents
@@ -21,24 +21,38 @@ struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
     }
-
+    
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
-
+    
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        
         var entries: [SimpleEntry] = []
-
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-            
+       
+        
+        
+        
         //Find timeLeft
-            let entryDate = Calendar.current.date(byAdding: .second, value: 10, to: currentDate)!
+       
+            
+            
+        
+            let entryDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, configuration: configuration)
             entries.append(entry)
         
-
+        
+            
+         
+       
+        
+        
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -46,6 +60,9 @@ struct Provider: IntentTimelineProvider {
 
 //This structs runs everysecond
 struct SimpleEntry: TimelineEntry {
+    
+   
+    
     let date: Date
     let configuration: ConfigurationIntent
     //let totalTime: Date //88mins
@@ -122,7 +139,7 @@ struct SimpleEntry: TimelineEntry {
             
             
         }
-            return whatHour
+        return whatHour
     }
     
     func timeTheClassLastFor() -> Float{
@@ -159,7 +176,7 @@ struct SimpleEntry: TimelineEntry {
         
     }
     
-    func formatTime(minutes ms: Float) -> Date{
+    func formatTime(minutes ms: Float) -> (Date, Int){
         
         
         var mn = ms
@@ -171,52 +188,16 @@ struct SimpleEntry: TimelineEntry {
         
         let components = DateComponents(hour: Int(hour), minute: Int(minute), second: Int(seconds))
         let futureDate = Calendar.current.date(byAdding: components, to: Date())!
-        return futureDate
-//        var timeLeft: String = ""
-//
-//        if hour == 0.0{
-//            if minute == 1{
-//                timeLeft="\(minute) minute and \(seconds) seconds"
-//            }else{
-//                timeLeft="\(minute) minutes and \(seconds) seconds"
-//            }
-//        }else if minute == 0.0{
-//            if hour == 0.0{
-//                timeLeft="\(seconds) seconds"
-//            }else{
-//                if hour == 1.0{
-//                    timeLeft="\(hour) hour and \(seconds) seconds"
-//                }else{
-//                    timeLeft="\(hour) hours and \(seconds) seconds"
-//                }
-//            }
-//
-//        }else{
-//            if hour == 1.0{
-//                if minute == 1{
-//                    timeLeft="\(hour) hour \(minute) minute and \(seconds) seconds"
-//                }else{
-//                    timeLeft="\(hour) hour \(minute) minutes and \(seconds) seconds"
-//                }
-//
-//            }else{
-//                if minute == 1{
-//                    timeLeft="\(hour) hours \(minute) minute and \(seconds) seconds"
-//                }else{
-//                    timeLeft="\(hour) hours \(minute) minutes and \(seconds) seconds"
-//                }
-//
-//            }
-//
-//
-//        }
-//
-//
-//        return timeLeft
+        
+        //may
+        
+        
+        return (futureDate, (Int(hour*3600) + Int(minute*60) + Int(seconds)))
+        
     }
     
     
-    func timeRemaing() -> (Date, Float){
+    func timeRemaing() -> (Date, Float, Int){
         
         //THIS IS FOR THE NUMERATOR
         
@@ -235,6 +216,7 @@ struct SimpleEntry: TimelineEntry {
         let timeInTheHour = timeTheClassLastFor()
         
         var valueRecieved: Date
+        var secondsRecievedFromformatTime: Int
         
         if whatHour != "School Starts"{
             
@@ -243,22 +225,17 @@ struct SimpleEntry: TimelineEntry {
             
             
             var arr: [String] = timeDict[whatHour] ?? [""]
-            //            if arr == [""]{
-            //                timeDict.checkSave()
-            //            }
+            
             
             
             var timeTwo = ""
             
-            //print(arr)
             
-            
-            //FIXED APP CRASHING
             if arr[0] == ""{
                 whatHour = whatHourCurrently()
                 arr = timeDict[whatHour] ?? [""]
                 timeTwo = arr[1]
-            
+                
                 
             }else{
                 timeTwo = arr[1]
@@ -267,11 +244,13 @@ struct SimpleEntry: TimelineEntry {
             
             let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
             
-
+            
             
             progress = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
-           
-            valueRecieved = formatTime(minutes: abs(secondTime-currentTime))
+            
+            let x = formatTime(minutes: abs(secondTime-currentTime))
+            valueRecieved = x.0
+            secondsRecievedFromformatTime = x.1
             
         }else{
             
@@ -286,7 +265,10 @@ struct SimpleEntry: TimelineEntry {
                 let hour = Float(endTime[..<endTime.firstIndex(of: ":")!])!*60
                 let minutes = Float(endTime[endTime.index(after: endTime.firstIndex(of: ":")!)...])!
                 time+=hour+minutes
-                valueRecieved = formatTime(minutes: time)
+                let x = formatTime(minutes: time)
+                valueRecieved = x.0
+                secondsRecievedFromformatTime = x.1
+                
                 progress = Float(abs(timeInTheHour-Float(time)))/timeInTheHour
                 
                 
@@ -300,9 +282,11 @@ struct SimpleEntry: TimelineEntry {
                 let secondTime = Float(String(timeTwo[..<timeTwo.firstIndex(of: ":")!]))!*60 + Float(String(timeTwo[timeTwo.index(after: timeTwo.firstIndex(of: ":")!)...]))!
                 
                 
-                //progressValue = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
+                progress = Float(abs(timeInTheHour - Float(abs(secondTime-currentTime))))/timeInTheHour
                 
-                valueRecieved = formatTime(minutes: abs(secondTime-currentTime))
+                let x = formatTime(minutes: abs(secondTime-currentTime))
+                valueRecieved = x.0
+                secondsRecievedFromformatTime = x.1
             }
             
             
@@ -310,10 +294,26 @@ struct SimpleEntry: TimelineEntry {
         }
         
         
-        //Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
         
-        return (valueRecieved, progress)
+        
+        return (valueRecieved, progress, secondsRecievedFromformatTime)
     }
+    
+    func getLunchSelectionThatWasPicked() -> Int{
+        //First see if lunch was picked.
+        //https://stackoverflow.com/questions/63922032/share-data-between-main-app-and-widget-in-swiftui-for-ios-14
+        return (UserDefaults(suiteName: "group.edu.ephs2020.widgetTest")?.integer(forKey: "pickedLunch"))!
+        
+        
+        //If let userDefaults
+    }
+    
+    //So weird might have to run the widget everysecond.
+    
+    
+    //ADD Function that encapsulates all here.
+    
+    
     
     
     
@@ -326,129 +326,134 @@ struct SimpleEntry: TimelineEntry {
 struct ClassTimerWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.widgetFamily) var family
     
-   
+    var time: Date {
+        return entry.timeRemaing().0
+        
+    }
     
-//    @State var whatHour: String = "1st hour"
-//    @StateObject var timeDict = dictionary()
-//
-//    @State var timeInTheHour: Float = 0.0
-//    @State var timeLeft: String = ""
+    @State var prog: Float = 0.95
     
-    //@State var progressValue: Float = 0.0
     
     var body: some View {
-        
+ 
         VStack{
-        switch family{
-        case .systemSmall:
+            
+            let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+                let x = entry.timeRemaing().2
+                print(x)
+                if x == 0{
+                    print("Called this")
+                    //Calling this, but why is the view not updating.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
+                    
+                    //Timer.invalidate()
+                }
+            
+               
+            }
             
             
             ProgressBarForWidget(progress: Binding.constant(entry.timeRemaing().1), timeInTheClass: Binding.constant(88)).overlay{
+                
                 VStack{
                     
                     Text(entry.whatHourCurrently()).fontWeight(.light)
-                    HStack{ //maybe remove hStack here
-                
-                        Text(entry.timeRemaing().0, style: .timer).fontWeight(.light).multilineTextAlignment(.center).padding(2)
-                    }
+                    //maybe remove hStack here
+                    
+                    Text(time, style: .timer).fontWeight(.light).multilineTextAlignment(.center).padding(2)
+                    //This aint working
+                    //Text(String(entry.getLunchSelectionThatWasPicked()))
+                    
                     
                 }
             }
-//            Text("1:02:03").multilineTextAlignment(.center).padding(.bottom).padding(.trailing).padding(.leading)
-//        case .systemMedium:
-//            ProgressBarForWidget(progress: Binding.constant(0.4), timeInTheClass: Binding.constant(88)).overlay{
-//                Text("1st Hour")
-//            }
-//            HStack{
-//                Spacer()
-//                //Text(entry.date, style: .timer)
-//                //Apparently needs String
-//                Text(entry.timeRemaing(), style: .timer)
-//                Spacer()
-//            }
-//            Text("1 hour : 2 minutes : 3 seconds left").multilineTextAlignment(.center).padding(.bottom).padding(.trailing).padding(.leading)
-        default:
-            Text("NA")
-        }
-        
-        
+            
+            
+            
+            
+        }.onTapGesture(count: 1, perform: {
+            print(time)
+        })
+            .onChange(of: time) { newValue in
+            print(newValue)
         }
         
     }
     
     
     
-
+    
     
     
     
     //    Add Lunch Functino here
     
     
-
-
-struct ProgressBarForWidget: View {
-    @Binding var progress: Float
-    @Binding var timeInTheClass: Float
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     
-    var body: some View {
+    struct ProgressBarForWidget: View {
+        @Binding var progress: Float
+        @Binding var timeInTheClass: Float
         
-        ZStack {
+        @Environment(\.colorScheme) var colorScheme: ColorScheme
+        
+       
+        var body: some View {
             
-            Circle()
-                .stroke(lineWidth: 10)
-                .opacity(0.3)
-                .padding()
-                .foregroundColor(Color.red.opacity(0.5))
-            
-            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? [Color(red: 173/255, green: 14/255, blue: 14/255), colorScheme == .dark ? Color(red: 205/255, green: 149/255, blue: 149/255): Color.black] : [Color.red, Color.black]), startPoint: .top, endPoint: .bottom)
-            .mask(
-                //MASK ADD COLOR TO FORGROUND OFF ALL OBJECTS IN HERE
+            ZStack {
                 
                 Circle()
-                    .trim(from: 0.0, to: CGFloat(min(progress, 1)))
-                    .stroke(style: StrokeStyle(lineWidth: 10, lineCap: (progress >= 0.9 ? .square: .round), lineJoin: .round))
+                    .stroke(lineWidth: 10)
+                    .opacity(0.3)
                     .padding()
-                    .rotationEffect(Angle(degrees: 270))
-                    .animation(.linear, value: progress)
-            
-            
-            )
+                    .foregroundColor(Color.red.opacity(0.5))
+                
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? [Color(red: 173/255, green: 14/255, blue: 14/255), colorScheme == .dark ? Color(red: 205/255, green: 149/255, blue: 149/255): Color.black] : [Color.red, Color.black]), startPoint: .top, endPoint: .bottom)
+                    .mask(
+                        //MASK ADD COLOR TO FORGROUND OFF ALL OBJECTS IN HERE
+                        
+                        Circle()
+                            .trim(from: 0.0, to: CGFloat(min(progress, 1)))
+                            .stroke(style: StrokeStyle(lineWidth: 10, lineCap: (progress >= 0.9 ? .square: .round), lineJoin: .round))
+                            .padding()
+                            .rotationEffect(Angle(degrees: 270))
+                            .animation(.linear, value: progress)
+                        
+                        
+                    )
+                
+                
+            }
             
             
         }
+    }
+    
+    
+    
+    
+    
+    
+    @main
+    struct ClassTimerWidget: Widget {
+        let kind: String = "ClassTimerWidget"
         
-        
+        var body: some WidgetConfiguration {
+            IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+                ClassTimerWidgetEntryView(entry: entry)
+            }.supportedFamilies([.systemSmall])//Add .systemMedium in array here
+                .configurationDisplayName("EPHS Class Timer Widget")
+                .description("This is an timer widget.")
+        }
     }
-}
-
-
-
-
-
-
-@main
-struct ClassTimerWidget: Widget {
-    let kind: String = "ClassTimerWidget"
-
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            ClassTimerWidgetEntryView(entry: entry)
-        }.supportedFamilies([.systemSmall])//Add .systemMedium in array here
-        .configurationDisplayName("EPHS Class Timer Widget")
-        .description("This is an example widget.")
+    
+    struct ClassTimerWidget_Previews: PreviewProvider {
+        static var previews: some View {
+            ClassTimerWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+        }
     }
-}
-
-struct ClassTimerWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        ClassTimerWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
 }
