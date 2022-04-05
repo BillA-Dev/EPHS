@@ -5,8 +5,15 @@ When does class end? Do we have flex today? When is lunch? The EPHS Timer app ca
 ![6 5 Settings- light resized](https://user-images.githubusercontent.com/94394689/161837576-2a79de5c-5fe1-4ab5-b7db-1fc48e2b05d4.png)
 ![6 5 ToDoList- light resized](https://user-images.githubusercontent.com/94394689/161837561-c6585293-a56a-4bcb-b142-fb159b825fcb.png)
 
-
-
+Version 0.3 Build 3
+  - Created a cloudKit app
+  - Integrated cloudkit
+  
+Version 0.2 Build 3
+  - Added a widget
+  - Fixed Issue of light and darmode
+  
+  
 
 Version 0.2 Build 2
   - Created toDoList View
