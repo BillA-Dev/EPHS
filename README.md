@@ -1,4 +1,13 @@
 # EPHS Timer
+When does class end? Do we have flex today? When is lunch? The EPHS Timer app can answer all your schedule-related questions. The timer shows the minutes and seconds remaining until class ends. In the settings menu, you can enable your lunch to customize the timer to fit your schedule. The EPHS Timer also features a to-do list so that you can productively use your class time. For easy access, you can add the timer widget to your home screen. 
+
+![6 5 Main- light resized](https://user-images.githubusercontent.com/94394689/161837251-751e3a84-9757-4865-8c2d-fb9a5da89ed4.png)
+![6 5 Settings- light resized](https://user-images.githubusercontent.com/94394689/161837576-2a79de5c-5fe1-4ab5-b7db-1fc48e2b05d4.png)
+![6 5 ToDoList- light resized](https://user-images.githubusercontent.com/94394689/161837561-c6585293-a56a-4bcb-b142-fb159b825fcb.png)
+
+
+
+
 Version 0.2 Build 2
   - Created toDoList View
   - Updated Lunch selection view
