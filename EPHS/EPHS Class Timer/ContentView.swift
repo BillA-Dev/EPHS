@@ -17,7 +17,6 @@
 //Fix Vibrations running OnAppear()
 
 
-
 import SwiftUI
 import Foundation
 import AudioToolbox
@@ -56,6 +55,7 @@ struct ContentView: View {
     
     @State var progressValue: Float = 0.0
     @State var currentTime: String = "Time:"
+    
     @StateObject var timeDict = dictionary()
     
     
@@ -180,7 +180,7 @@ struct ContentView: View {
             LunchSelectionView(isShowing: $showingSettings, opacity: $opac)
             
             
-        }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek(); isNavigationBarHidden = true}
+        }.onAppear{functionThatEncapsulatesALL(); dayUpdater = getDayOfTheWeek(); isNavigationBarHidden = true; timeDict.getInfo()}
         .environmentObject(timeDict)
         
         
@@ -263,6 +263,10 @@ struct ContentView: View {
         
         //Run lunch function; when get userDefault
         //Other than that run, the other
+        
+        timeDict.getLunch()
+        
+        
         
         
         _ = getDayOfTheWeek()

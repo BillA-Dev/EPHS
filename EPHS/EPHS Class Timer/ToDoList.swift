@@ -79,21 +79,21 @@ struct ToDoList: View {
                     
                     //ADD A BUTTON
                   
-                        Text(dictText.item)
+                    Text(dictText.item)
                     
                     
                     
                 //Understand how the OnDelete function works
-                }.onDelete(perform: onDelete).onTapGesture(count: 2){
+                }
+                .onMove(perform: move)
+                
+                .onDelete(perform: onDelete).onTapGesture(count: 2){
                     print("Double Clicked")
                 }
                 
                 
                 //On Tap Gesture here. Have an image; correct and wrong
                 
-            }.toolbar{
-                //see if this works
-                EditButton()
             }
             
             HStack{
@@ -154,8 +154,22 @@ struct ToDoList: View {
         
     }
     
+    func getIdsOnTap(at offsets: IndexSet){
+        let id = offsets.map {  toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]![$0].id }
+        print(id)
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        print("This is not working")
+        toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!.move(fromOffsets: source, toOffset: destination)
+       }
+    
     
     func onDelete(at offsets: IndexSet){
+//        let idsToDelete = offsets.map {  toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]![$0].id }
+//        for x in toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!{
+//            if x.id = idsToDelete
+//        }
         toDoDict[pickedHour == 0 ? "First Hour" : pickedHour == 1 ? "Second Hour" : pickedHour == 2 ? "Third Hour" : "Fourth Hour"]!.remove(atOffsets: offsets)
     }
     

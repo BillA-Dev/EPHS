@@ -60,7 +60,7 @@ struct Provider: IntentTimelineProvider {
 
 //This structs runs everysecond
 struct SimpleEntry: TimelineEntry {
-    
+    //DO timer thing onstart
    
     
     let date: Date

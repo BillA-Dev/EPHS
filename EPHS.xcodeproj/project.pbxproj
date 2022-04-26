@@ -10,11 +10,13 @@
 		5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */; };
 		5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */; };
 		5C3CF56327C9783900E9EC22 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56227C9783900E9EC22 /* ToDoList.swift */; };
+		5C482F47281308E10007A6E4 /* TestNewMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C482F46281308E10007A6E4 /* TestNewMethod.swift */; };
 		5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */; };
 		5C5A5E2127B54EF3000DE807 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2027B54EF3000DE807 /* ContentView.swift */; };
 		5C5A5E2327B54EF7000DE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2227B54EF7000DE807 /* Assets.xcassets */; };
 		5C5A5E2627B54EF7000DE807 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2527B54EF7000DE807 /* Preview Assets.xcassets */; };
 		5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */; };
+		5C9429DE28047C9E00E5D55C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9429DD28047C9E00E5D55C /* CloudKit.framework */; };
 		5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */; };
 		5CA153F927C6A4A5003E77F2 /* dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153F827C6A4A5003E77F2 /* dictionary.swift */; };
 		5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */; };
@@ -55,12 +57,14 @@
 		5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		5C3CF56227C9783900E9EC22 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		5C482F46281308E10007A6E4 /* TestNewMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewMethod.swift; sourceTree = "<group>"; };
 		5C5A5E1B27B54EF3000DE807 /* EPHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EPHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPHSApp.swift; sourceTree = "<group>"; };
 		5C5A5E2027B54EF3000DE807 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C5A5E2227B54EF7000DE807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C5A5E2527B54EF7000DE807 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		5C9429DD28047C9E00E5D55C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchSelectionView.swift; sourceTree = "<group>"; };
 		5CA153F827C6A4A5003E77F2 /* dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictionary.swift; sourceTree = "<group>"; };
 		5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C9429DE28047C9E00E5D55C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +152,7 @@
 		5CA153FA27C7D3A4003E77F2 /* EPHS Class Timer */ = {
 			isa = PBXGroup;
 			children = (
+				5C482F46281308E10007A6E4 /* TestNewMethod.swift */,
 				5CA153F827C6A4A5003E77F2 /* dictionary.swift */,
 				5C5A5E2027B54EF3000DE807 /* ContentView.swift */,
 				5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */,
@@ -167,6 +173,7 @@
 		5CABEF6427D1212C00ED78DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C9429DD28047C9E00E5D55C /* CloudKit.framework */,
 				5CABEF6527D1212C00ED78DD /* WidgetKit.framework */,
 				5CABEF6727D1212C00ED78DD /* SwiftUI.framework */,
 			);
@@ -291,6 +298,7 @@
 				5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */,
 				5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */,
 				5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */,
+				5C482F47281308E10007A6E4 /* TestNewMethod.swift in Sources */,
 				5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */,
 				5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */,
 				5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */,
@@ -450,8 +458,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,8 +490,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

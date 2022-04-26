@@ -26,8 +26,10 @@ struct ProgressBar: View {
                 //MASK ADD COLOR TO FORGROUND OFF ALL OBJECTS IN HERE
                 
                 Circle()
+                    
                     .trim(from: 0.0, to: CGFloat(min(progress, 1)))
-                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: (progress >= 0.9 ? .square: .round), lineJoin: .round))
+                //(progress >= 0.9 ? .square: .round)
+                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: .round, lineJoin: .round))
                     .padding()
                     .rotationEffect(Angle(degrees: 270))
                     .animation(.linear, value: progress)

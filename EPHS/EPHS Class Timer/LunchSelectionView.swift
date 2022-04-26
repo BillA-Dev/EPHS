@@ -30,6 +30,7 @@ struct LunchSelectionView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
+    @State var selectedText: String = ""
     
     var body: some View {
         ZStack{
@@ -99,15 +100,11 @@ struct LunchSelectionView: View {
                             HStack{
                             
                             //Keep the picker text, and tags
-                            Picker(selection: $pickedLunch, label: Text("Choose Lunch")) {
-                                Text("First Lunch")
-                                    .tag(0)
-                                Text("Second Lunch")
-                                    .tag(1)
-                                Text("Third Lunch")
-                                    .tag(2)
-                                Text("Fourth Lunch")
-                                    .tag(3)
+                            Picker("Choose Lunch", selection: $selectedText) {
+                                ForEach(Array(timeDict.lunch.keys), id:\.self){x in
+                                    Text(x)
+                                }
+                                
                             }.background(colorScheme == .light ? Color.white.opacity(0): Color.black.opacity(0))//This opactiy might be off
                                 .disabled(!isToggleOn)
                                 Image(systemName: "arrow.down")
@@ -138,23 +135,33 @@ struct LunchSelectionView: View {
                                 
                                 if isToggleOn{
                                     
+                                   
+                                    timeDict.timeDict = timeDict.savedDict
                                     
-                                    timeDict.resetLunch()
+                                    updateTimeDict()
                                     
-                                    
+                                    print("BUTTONCLICKED")
+                                    print(timeDict.timeDict)
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                                        timeDict.addLunch(enterLunch: pickedLunch)
+                                       timeDict.addLunchToDict(userSelectedLunch: selectedText)
+      
                                     }
                                     
                                     
-                                    
-                                    //print(timeDict.timeDict)
+        
+    
                                     
                                 }else{
                                     
-                                    timeDict.resetLunch()
+                                    timeDict.timeDict = timeDict.savedDict
+                                    updateTimeDict()
+                                    
+                                   
+                                    
                                 }
                                 
+                                UserDefaults.standard.set(isToggleOn, forKey: "isLunchToggleOn")
+                                UserDefaults.standard.set(selectedText, forKey: "whatLunchSelected")
                                 
                                 isShowing = false
                             }){
@@ -162,6 +169,16 @@ struct LunchSelectionView: View {
                             }.border(LinearGradient(gradient: Gradient(colors: [colorScheme == .dark ? Color.white : Color.black, Color.red]), startPoint: .bottom, endPoint: .top)).padding()//Add Background here
                             Spacer()
                             
+                        }
+                        .onAppear{
+                            isToggleOn = UserDefaults.standard.bool(forKey: "isLunchToggleOn")
+                            if let v = UserDefaults.standard.string(forKey: "whatLunchSelected"){
+                                if !v.isEmpty{
+                                    selectedText = v
+                                }else{
+                                    isToggleOn = false
+                                }
+                            }
                         }
                         
                         
@@ -174,6 +191,32 @@ struct LunchSelectionView: View {
            
         
     }
+    
+    func updateTimeDict(){
+        for (index, value) in timeDict.timeDict{
+            timeDict.timeDict[index] = value.map{$0.timeToMinutes()
+            }
+        }
+        
+        addSchoolStart()
+        
+    }
+    func addSchoolStart(){
+        var min = Int.max
+        var max = Int.min
+        
+        for (_, value) in timeDict.timeDict{
+            if Int(value[1])! > max{
+                max = Int(value[1])!
+            }
+            if Int(value[0])! < min{
+                min = Int(value[0])!
+            }
+        }
+        
+        timeDict.timeDict["School Starts"] = [String(max), String(min)]
+    }
+    
     
     
 }
