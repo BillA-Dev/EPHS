@@ -9,7 +9,22 @@ import Foundation
 import SwiftUI
 import CloudKit
 
+extension String{
+    func timeToMinutes() -> String{
+        let s = self
+        guard let hour = Int(s[..<firstIndex(of: ":")!]) else { return "Failed" }
+        guard let minute = Int(s[s.index(after: s.firstIndex(of: ":")!)...]) else { return "Failed" }
+        return String((hour * 60)+minute)
+    }
+}
+
+
 class dictionary: ObservableObject{
+    
+    
+    @Published var shouldSwitch: Bool = false
+    
+    
     @Published var dataBase = CKContainer.init(identifier: "iCloud.ephs2022.AdminApp")
     
     @Published var dates = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
@@ -31,11 +46,16 @@ class dictionary: ObservableObject{
     //This is when the user turns of lunch
     @Published var savedDict: [String:[String]] = [:]
     
+    
     public func getInfo(){
         
+        //Testing purposes
+        //let q = CKQuery(recordType: "Thursday", predicate: NSPredicate(value: true))
+        //print(dates[Calendar.current.component(.weekday, from: Date())])
         
         
-        let q = CKQuery(recordType: dates[Calendar.current.component(.weekday, from: Date())], predicate: NSPredicate(value: true))
+       let q = CKQuery(recordType: dates[Calendar.current.component(.weekday, from: Date())], predicate: NSPredicate(value: true))
+        print(q)
         let op = CKQueryOperation(query: q)
         var a: [[String]] = []
         
@@ -194,7 +214,11 @@ class dictionary: ObservableObject{
     }
     
     func getLunch(){
-        let recordName: String = "Lunch\(dates[Calendar.current.component(.weekday, from: Date())])"
+        
+        //Testing
+       // let recordName: String = "LunchMonday"
+        
+      let recordName: String = "Lunch\(dates[Calendar.current.component(.weekday, from: Date())])"
         let q = CKQuery(recordType: recordName, predicate: NSPredicate(value: true))
         let op = CKQueryOperation(query: q)
         var a: [[String]] = []
@@ -305,7 +329,7 @@ class dictionary: ObservableObject{
             let arrSaved = arr
             timeDict[h] = [timeDict[h]![0], lunch[selectedLunch]![0]]
             timeDict[selectedLunch] = lunch[selectedLunch]
-            timeDict["\(h)2"] = [lunch[selectedLunch]![1], arrSaved[1]]
+            timeDict["\(h) - 2"] = [lunch[selectedLunch]![1], arrSaved[1]]
         }
         
         print(timeDict)

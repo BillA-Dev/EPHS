@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//https://stackoverflow.com/questions/32335942/check-if-user-is-logged-into-icloud-swift-ios
+
+
 @main
 struct EPHSApp: App {
 
@@ -14,16 +17,14 @@ struct EPHSApp: App {
     var body: some Scene {
         WindowGroup {
           
-        
-            VStack{
-           TestNewMethod().environmentObject(dict)
-            }.onAppear {
-                dict.getInfo()
-                dict.getLunch()
+            
+//
+            if !dict.shouldSwitch{
+                anotherAnimationTest().environmentObject(dict)
+            }else{
+                TestNewMethod().environmentObject(dict)
             }
-            //SettingsScreen()
-            //mainScreen(isShowing: Binding.constant(true))
-            //ToDoList()
+                //deleteLater()
            
         }
     }

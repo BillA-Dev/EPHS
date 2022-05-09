@@ -9,14 +9,19 @@ import SwiftUI
 struct ProgressBar: View {
     @Binding var progress: Float
     @Binding var timeInTheClass: Float
-    
+    var lineWidth: Int = 30 //Should be 30
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
+    //Timer.publish(every: 1, on: .current, in: .defualt).autoConnect()
+  //  @State var receiver = Timer.publish(every: 1, on: .current, in: .default).autoconnect()
+    @State var string = ""
+    
     var body: some View {
         
         ZStack {
-            
+           // Text(string)
             Circle()
-                .stroke(lineWidth: 30)
+                .stroke(lineWidth: CGFloat(lineWidth))
                 .opacity(0.3)
                 .padding()
                 .foregroundColor(Color.red.opacity(0.5))
@@ -29,7 +34,7 @@ struct ProgressBar: View {
                     
                     .trim(from: 0.0, to: CGFloat(min(progress, 1)))
                 //(progress >= 0.9 ? .square: .round)
-                    .stroke(style: StrokeStyle(lineWidth: 30, lineCap: .round, lineJoin: .round))
+                    .stroke(style: StrokeStyle(lineWidth: CGFloat(lineWidth), lineCap: .round, lineJoin: .round))
                     .padding()
                     .rotationEffect(Angle(degrees: 270))
                     .animation(.linear, value: progress)
@@ -39,6 +44,11 @@ struct ProgressBar: View {
             
             
         }.padding()
+//            .onReceive(receiver) { _ in
+//                string = String(Int.random(in: 1..<5))
+//                print(string)
+//
+//            }
         
         
     }
@@ -46,6 +56,6 @@ struct ProgressBar: View {
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar(progress: Binding.constant(50), timeInTheClass: Binding.constant(88))
+        ProgressBar(progress: Binding.constant(50), timeInTheClass: Binding.constant(88), lineWidth: 30)
     }
 }

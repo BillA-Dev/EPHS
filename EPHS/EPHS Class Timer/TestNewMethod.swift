@@ -6,22 +6,19 @@
 //
 
 import SwiftUI
+import WidgetKit
 
-extension String{
-    func timeToMinutes() -> String{
-        let s = self
-        guard let hour = Int(s[..<firstIndex(of: ":")!]) else { return "Failed" }
-        guard let minute = Int(s[s.index(after: s.firstIndex(of: ":")!)...]) else { return "Failed" }
-        return String((hour * 60)+minute)
-    }
-}
+
 
 struct TestNewMethod: View {
     @EnvironmentObject var dict: dictionary
+    @Environment(\.scenePhase) var scenePhase
     
+    @AppStorage("final_tutorial") var isTutorialPresented: Bool = true
+    @State var isTutorialPresentedState: Bool = false
     
+    var dates = [1:"Sunday", 2: "Monday", 3: "Tuesday", 4:"Wednesday", 5:"Thursday", 6:"Friday", 7:"Saturday"]
     
-   
     
     @State var timeRemainingText: String = "LOADING..."
     
@@ -35,6 +32,16 @@ struct TestNewMethod: View {
     @State var showingSettings = false
     @State var opac = 0.0
     
+    
+    
+    //Testing purposes
+    @State var test = ""
+    @State var x = 0
+    //
+    
+    
+    
+    @State var currentDay: String = ""
     
     var body: some View {
         
@@ -56,10 +63,13 @@ struct TestNewMethod: View {
                     
                     
                     Spacer()
+                    Text("\(currentDay)")
+                        .font(.headline)
+                        .fontWeight(.semibold).padding()
+                    Spacer()
                     Button(action:{
                         showingSettings.toggle()
-                        //If false turns it to true
-                        //if ture turns it to false
+                        
                         if showingSettings == false{
                             
                             opac = 0.5
@@ -80,6 +90,8 @@ struct TestNewMethod: View {
                     Spacer()
                     
                     
+                }.popover(isPresented: $isToDoListShowing) {
+                    ToDoList(currentHour: $getCurrentHour)
                 }
                 Spacer()
                 
@@ -93,48 +105,50 @@ struct TestNewMethod: View {
                             Text(getCurrentHour).font(.caption).fontWeight(.light).padding()
                             Text(timeRemainingText).font(.caption).fontWeight(.light).padding().onAppear{
                                 
-                                //I know the error not?
+                                WidgetCenter.shared.reloadAllTimelines()
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
-                                   // dict.timeDict
-                                    
-                                   
-                                    dict.savedDict = dict.timeDict
-                                    
-                                    //IF LUNCH Chosen
-                                    for (index, value) in dict.timeDict{
-                                        dict.timeDict[index] = value.map{$0.timeToMinutes()
-                                        }
+                                dict.savedDict = dict.timeDict
+                                
+                                //IF LUNCH Chosen
+                                for (index, value) in dict.timeDict{
+                                    dict.timeDict[index] = value.map{$0.timeToMinutes()
                                     }
-                                    
-                                    addSchoolStart()
-                                    
-                                    let x = UserDefaults.standard.bool(forKey: "isLunchToggleOn")
-                                    print(x)
-                                        if x == true{
-                                            if let val = UserDefaults.standard.string(forKey: "whatLunchSelected"){
-                                                if !val.isEmpty{
-                                                dict.addLunchToDict(userSelectedLunch: val)
-                                                }
-                                            }
-                                        }
-                                    
-                                       
-                                 
-                                    
-                                   // print(dict.timeDict)
-                                    
-                                    DispatchQueue.main.async {
-                                        Timer.scheduledTimer(withTimeInterval: 1, repeats: true){timer in
-                                            
-                                            //Turn this into
-                                            getCurrentHour = getHourCurrently().0
-                                            timeRemaining(currentHourIn: getCurrentHour)
-                                            
-                                        }
-                                    }
-                                    
                                 }
+                                
+                                addSchoolStart()
+                                
+                                ///Check if it works or not
+                                //                                    let x = UserDefaults.standard.bool(forKey: "isLunchToggleOn")
+                                //                                    print(x)
+                                //                                        if x == true{
+                                //                                            if let val = UserDefaults.standard.string(forKey: "whatLunchSelected"){
+                                //                                                if !val.isEmpty{
+                                //                                                dict.addLunchToDict(userSelectedLunch: val)
+                                //                                                }
+                                //                                            }
+                                //                                        }
+                                
+                                
+                                
+                                
+                                //print(dict.timeDict)
+                                
+                                getCurrentHour = getHourCurrently().0
+                                timeRemaining(currentHourIn: getCurrentHour)
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true){timer in
+                                        
+                                       
+                                        getCurrentHour = getHourCurrently().0
+                                        timeRemaining(currentHourIn: getCurrentHour)
+                                        
+                                        
+                                    }
+                                }
+                                
+                                
                                 
                                 
                             }
@@ -143,18 +157,49 @@ struct TestNewMethod: View {
                             
                         }
                     }.padding()
+                        .onChange(of: getCurrentHour) { V in
+                            //Time line is werid, IDK/
+                            WidgetCenter.shared.reloadAllTimelines()
+                            print("refreshing widget")
+                        }
                     
                 }
                 
                 
+            }.onAppear{
+                let today = Date()
+                let day = Int(Calendar.current.component(.weekday, from: today))
+                
+                currentDay = dates[day]!
+                
+                if isTutorialPresented{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                    isTutorialPresentedState = isTutorialPresented
+                }
+                }
+                
             }
-            //Have to make this dynamic as well
-            //        .popover(isPresented: $isToDoListShowing) {
-            //            ToDoList(currentHour: getHourCurrently().0)
-            //        }
+            //Have to make this dynamic as wel
             
             LunchSelectionView(isShowing: $showingSettings, opacity: $opac)
+        }.onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                WidgetCenter.shared.reloadAllTimelines()
+            } else if newPhase == .inactive {
+                WidgetCenter.shared.reloadAllTimelines()
+            } else if newPhase == .background {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
+        .sheet(isPresented: $isTutorialPresentedState, onDismiss: {
+            isTutorialPresented = isTutorialPresentedState
+        }) {
+            MainTutorialScreen(tutorialStarted: $isTutorialPresentedState)
+                .interactiveDismissDisabled(true)
+        }
+        
+       
+       
         
     }
     
@@ -240,12 +285,16 @@ struct TestNewMethod: View {
             progressValue = Float(abs((abs(hours - lastTime) - Double(getHourCurrently().1))) / Double(getHourCurrently().1))
         }else{
             //Have to find the time remaining
-            if hours <= 24*60{
+            //....
+            // print(hours)
+            if hours > 12*60{
                 //Figure this out
                 
                 formatTime(enterTime: abs(24*60 - hours + lastTime))
                 progressValue = Float(abs((abs(24*60 - hours + lastTime) - Double(getHourCurrently().1))) / Double(getHourCurrently().1))
             }else{
+                
+                // print(hours)
                 formatTime(enterTime: abs(hours - lastTime))
                 progressValue = Float(abs((abs(hours - lastTime) - Double(getHourCurrently().1))) / Double(getHourCurrently().1))
             }
@@ -318,7 +367,7 @@ struct TestNewMethod: View {
         if !currentlyInSchool{
             hourName = "School Starts"
         }
-     
+        
         
         return (hourName, timeInHour(enterNameOfClass: hourName, hourName: hourName))
         //This should return how much time in the hour!

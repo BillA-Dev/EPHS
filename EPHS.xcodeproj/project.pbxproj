@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */; };
-		5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */; };
 		5C3CF56327C9783900E9EC22 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF56227C9783900E9EC22 /* ToDoList.swift */; };
 		5C482F47281308E10007A6E4 /* TestNewMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C482F46281308E10007A6E4 /* TestNewMethod.swift */; };
 		5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */; };
@@ -16,37 +14,47 @@
 		5C5A5E2327B54EF7000DE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2227B54EF7000DE807 /* Assets.xcassets */; };
 		5C5A5E2627B54EF7000DE807 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2527B54EF7000DE807 /* Preview Assets.xcassets */; };
 		5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */; };
+		5C62543C281B0C510042EF85 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6527D1212C00ED78DD /* WidgetKit.framework */; };
+		5C62543D281B0C510042EF85 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6727D1212C00ED78DD /* SwiftUI.framework */; };
+		5C62544C281B0CCC0042EF85 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9429DD28047C9E00E5D55C /* CloudKit.framework */; };
+		5C62544D281B0DD70042EF85 /* dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153F827C6A4A5003E77F2 /* dictionary.swift */; };
+		5C62544E281B0E660042EF85 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */; };
+		5C625454281C3ECA0042EF85 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6527D1212C00ED78DD /* WidgetKit.framework */; };
+		5C625455281C3ECA0042EF85 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6727D1212C00ED78DD /* SwiftUI.framework */; };
+		5C625458281C3ECA0042EF85 /* EPHS_Timer_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625457281C3ECA0042EF85 /* EPHS_Timer_Widget.swift */; };
+		5C62545A281C3ECE0042EF85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C625459281C3ECE0042EF85 /* Assets.xcassets */; };
+		5C62545E281C3ECE0042EF85 /* EPHS Timer WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C625453281C3ECA0042EF85 /* EPHS Timer WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C625462281C3EF90042EF85 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */; };
+		5C625463281C3EF90042EF85 /* dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153F827C6A4A5003E77F2 /* dictionary.swift */; };
+		5C625465281C462C0042EF85 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9429DD28047C9E00E5D55C /* CloudKit.framework */; };
 		5C9429DE28047C9E00E5D55C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9429DD28047C9E00E5D55C /* CloudKit.framework */; };
 		5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */; };
 		5CA153F927C6A4A5003E77F2 /* dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153F827C6A4A5003E77F2 /* dictionary.swift */; };
-		5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */; };
+		5CA7B588282426B0002544AE /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7B587282426B0002544AE /* AnimationView.swift */; };
 		5CABEF6627D1212C00ED78DD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6527D1212C00ED78DD /* WidgetKit.framework */; };
 		5CABEF6827D1212C00ED78DD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CABEF6727D1212C00ED78DD /* SwiftUI.framework */; };
-		5CABEF6B27D1212C00ED78DD /* ClassTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */; };
-		5CABEF6E27D1213100ED78DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABEF6D27D1213100ED78DD /* Assets.xcassets */; };
-		5CABEF7027D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */; };
-		5CABEF7127D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */; };
-		5CABEF7427D1213100ED78DD /* ClassTimerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5CFF257428296641002B2390 /* anotherAnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF257328296641002B2390 /* anotherAnimationTest.swift */; };
+		5CFF2577282971D0002B2390 /* MainTutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF2576282971D0002B2390 /* MainTutorialScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5CABEF7227D1213100ED78DD /* PBXContainerItemProxy */ = {
+		5C62545C281C3ECE0042EF85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C5A5E1327B54EF3000DE807 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5CABEF6227D1212C00ED78DD;
-			remoteInfo = ClassTimerWidgetExtension;
+			remoteGlobalIDString = 5C625452281C3ECA0042EF85;
+			remoteInfo = "EPHS Timer WidgetExtension";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5CABEF7527D1213100ED78DD /* Embed App Extensions */ = {
+		5C625447281B0C540042EF85 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5CABEF7427D1213100ED78DD /* ClassTimerWidgetExtension.appex in Embed App Extensions */,
+				5C62545E281C3ECE0042EF85 /* EPHS Timer WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,8 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
-		5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		5C13DA692819D3F900A9660C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C3CF56227C9783900E9EC22 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		5C482F46281308E10007A6E4 /* TestNewMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNewMethod.swift; sourceTree = "<group>"; };
 		5C5A5E1B27B54EF3000DE807 /* EPHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EPHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,18 +71,23 @@
 		5C5A5E2227B54EF7000DE807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C5A5E2527B54EF7000DE807 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		5C62543B281B0C510042EF85 /* TimerWidgerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerWidgerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C62544B281B0CC70042EF85 /* TimerWidgerExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerWidgerExtension.entitlements; sourceTree = "<group>"; };
+		5C625453281C3ECA0042EF85 /* EPHS Timer WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EPHS Timer WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C625457281C3ECA0042EF85 /* EPHS_Timer_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPHS_Timer_Widget.swift; sourceTree = "<group>"; };
+		5C625459281C3ECE0042EF85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C62545B281C3ECE0042EF85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C625464281C462A0042EF85 /* EPHS Timer WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "EPHS Timer WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		5C9429DD28047C9E00E5D55C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchSelectionView.swift; sourceTree = "<group>"; };
 		5CA153F827C6A4A5003E77F2 /* dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictionary.swift; sourceTree = "<group>"; };
-		5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		5CA7B587282426B0002544AE /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClassTimerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABEF6527D1212C00ED78DD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5CABEF6727D1212C00ED78DD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTimerWidget.swift; sourceTree = "<group>"; };
-		5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ClassTimerWidget.intentdefinition; sourceTree = "<group>"; };
-		5CABEF6D27D1213100ED78DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5CABEF6F27D1213100ED78DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CABEF7B27D2904500ED78DD /* EPHS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EPHS.entitlements; sourceTree = "<group>"; };
+		5CFF257328296641002B2390 /* anotherAnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = anotherAnimationTest.swift; sourceTree = "<group>"; };
+		5CFF2576282971D0002B2390 /* MainTutorialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTutorialScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C9429DE28047C9E00E5D55C /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C625438281B0C510042EF85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C62544C281B0CCC0042EF85 /* CloudKit.framework in Frameworks */,
+				5C62543D281B0C510042EF85 /* SwiftUI.framework in Frameworks */,
+				5C62543C281B0C510042EF85 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C625450281C3ECA0042EF85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C625465281C462C0042EF85 /* CloudKit.framework in Frameworks */,
+				5C625455281C3ECA0042EF85 /* SwiftUI.framework in Frameworks */,
+				5C625454281C3ECA0042EF85 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,20 +131,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C3CF55D27C7E7DA00E9EC22 /* MainScreen */ = {
-			isa = PBXGroup;
-			children = (
-				5C3CF55E27C7E80200E9EC22 /* mainScreen.swift */,
-				5C3CF56027C7F15500E9EC22 /* ViewModifier.swift */,
-			);
-			path = MainScreen;
-			sourceTree = "<group>";
-		};
 		5C5A5E1227B54EF3000DE807 = {
 			isa = PBXGroup;
 			children = (
+				5C625464281C462A0042EF85 /* EPHS Timer WidgetExtension.entitlements */,
+				5C62544B281B0CC70042EF85 /* TimerWidgerExtension.entitlements */,
 				5C5A5E1D27B54EF3000DE807 /* EPHS */,
-				5CABEF6927D1212C00ED78DD /* ClassTimerWidget */,
+				5C625456281C3ECA0042EF85 /* EPHS Timer Widget */,
 				5CABEF6427D1212C00ED78DD /* Frameworks */,
 				5C5A5E1C27B54EF3000DE807 /* Products */,
 			);
@@ -123,6 +148,8 @@
 			children = (
 				5C5A5E1B27B54EF3000DE807 /* EPHS.app */,
 				5CABEF6327D1212C00ED78DD /* ClassTimerWidgetExtension.appex */,
+				5C62543B281B0C510042EF85 /* TimerWidgerExtension.appex */,
+				5C625453281C3ECA0042EF85 /* EPHS Timer WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,10 +157,10 @@
 		5C5A5E1D27B54EF3000DE807 /* EPHS */ = {
 			isa = PBXGroup;
 			children = (
+				5CFF2575282971B9002B2390 /* Tutorial */,
+				5C13DA692819D3F900A9660C /* Info.plist */,
 				5CABEF7B27D2904500ED78DD /* EPHS.entitlements */,
 				5C5A5E1E27B54EF3000DE807 /* EPHSApp.swift */,
-				5C3CF55D27C7E7DA00E9EC22 /* MainScreen */,
-				5CA153FB27C7D3CD003E77F2 /* Choice Timer */,
 				5CA153FA27C7D3A4003E77F2 /* EPHS Class Timer */,
 				5C5A5E2227B54EF7000DE807 /* Assets.xcassets */,
 				5C5A5E2427B54EF7000DE807 /* Preview Content */,
@@ -149,6 +176,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5C625456281C3ECA0042EF85 /* EPHS Timer Widget */ = {
+			isa = PBXGroup;
+			children = (
+				5C625457281C3ECA0042EF85 /* EPHS_Timer_Widget.swift */,
+				5C625459281C3ECE0042EF85 /* Assets.xcassets */,
+				5C62545B281C3ECE0042EF85 /* Info.plist */,
+			);
+			path = "EPHS Timer Widget";
+			sourceTree = "<group>";
+		};
 		5CA153FA27C7D3A4003E77F2 /* EPHS Class Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,16 +195,10 @@
 				5C5A5E2C27B54F0D000DE807 /* ProgressBar.swift */,
 				5C96D55C27BAC36C0078206D /* LunchSelectionView.swift */,
 				5C3CF56227C9783900E9EC22 /* ToDoList.swift */,
+				5CA7B587282426B0002544AE /* AnimationView.swift */,
+				5CFF257328296641002B2390 /* anotherAnimationTest.swift */,
 			);
 			path = "EPHS Class Timer";
-			sourceTree = "<group>";
-		};
-		5CA153FB27C7D3CD003E77F2 /* Choice Timer */ = {
-			isa = PBXGroup;
-			children = (
-				5CA153FC27C7D468003E77F2 /* SettingsScreen.swift */,
-			);
-			path = "Choice Timer";
 			sourceTree = "<group>";
 		};
 		5CABEF6427D1212C00ED78DD /* Frameworks */ = {
@@ -180,15 +211,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5CABEF6927D1212C00ED78DD /* ClassTimerWidget */ = {
+		5CFF2575282971B9002B2390 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				5CABEF6A27D1212C00ED78DD /* ClassTimerWidget.swift */,
-				5CABEF6C27D1212C00ED78DD /* ClassTimerWidget.intentdefinition */,
-				5CABEF6D27D1213100ED78DD /* Assets.xcassets */,
-				5CABEF6F27D1213100ED78DD /* Info.plist */,
+				5CFF2576282971D0002B2390 /* MainTutorialScreen.swift */,
 			);
-			path = ClassTimerWidget;
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,17 +229,51 @@
 				5C5A5E1727B54EF3000DE807 /* Sources */,
 				5C5A5E1827B54EF3000DE807 /* Frameworks */,
 				5C5A5E1927B54EF3000DE807 /* Resources */,
-				5CABEF7527D1213100ED78DD /* Embed App Extensions */,
+				5C625447281B0C540042EF85 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5CABEF7327D1213100ED78DD /* PBXTargetDependency */,
+				5C62545D281C3ECE0042EF85 /* PBXTargetDependency */,
 			);
 			name = EPHS;
 			productName = EPHS;
 			productReference = 5C5A5E1B27B54EF3000DE807 /* EPHS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5C62543A281B0C510042EF85 /* TimerWidgerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C62544A281B0C540042EF85 /* Build configuration list for PBXNativeTarget "TimerWidgerExtension" */;
+			buildPhases = (
+				5C625437281B0C510042EF85 /* Sources */,
+				5C625438281B0C510042EF85 /* Frameworks */,
+				5C625439281B0C510042EF85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimerWidgerExtension;
+			productName = TimerWidgerExtension;
+			productReference = 5C62543B281B0C510042EF85 /* TimerWidgerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5C625452281C3ECA0042EF85 /* EPHS Timer WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C62545F281C3ECE0042EF85 /* Build configuration list for PBXNativeTarget "EPHS Timer WidgetExtension" */;
+			buildPhases = (
+				5C62544F281C3ECA0042EF85 /* Sources */,
+				5C625450281C3ECA0042EF85 /* Frameworks */,
+				5C625451281C3ECA0042EF85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EPHS Timer WidgetExtension";
+			productName = "EPHS Timer WidgetExtension";
+			productReference = 5C625453281C3ECA0042EF85 /* EPHS Timer WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */ = {
 			isa = PBXNativeTarget;
@@ -243,6 +305,12 @@
 					5C5A5E1A27B54EF3000DE807 = {
 						CreatedOnToolsVersion = 13.2;
 					};
+					5C62543A281B0C510042EF85 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					5C625452281C3ECA0042EF85 = {
+						CreatedOnToolsVersion = 13.2;
+					};
 					5CABEF6227D1212C00ED78DD = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -263,6 +331,8 @@
 			targets = (
 				5C5A5E1A27B54EF3000DE807 /* EPHS */,
 				5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */,
+				5C62543A281B0C510042EF85 /* TimerWidgerExtension */,
+				5C625452281C3ECA0042EF85 /* EPHS Timer WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -277,11 +347,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C625439281B0C510042EF85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C625451281C3ECA0042EF85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C62545A281C3ECE0042EF85 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5CABEF6127D1212C00ED78DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CABEF6E27D1213100ED78DD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,17 +376,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFF2577282971D0002B2390 /* MainTutorialScreen.swift in Sources */,
 				5C5A5E2127B54EF3000DE807 /* ContentView.swift in Sources */,
 				5C3CF56327C9783900E9EC22 /* ToDoList.swift in Sources */,
 				5CA153F927C6A4A5003E77F2 /* dictionary.swift in Sources */,
 				5C5A5E2D27B54F0D000DE807 /* ProgressBar.swift in Sources */,
 				5C96D55D27BAC36C0078206D /* LunchSelectionView.swift in Sources */,
-				5CA153FD27C7D468003E77F2 /* SettingsScreen.swift in Sources */,
+				5CA7B588282426B0002544AE /* AnimationView.swift in Sources */,
+				5CFF257428296641002B2390 /* anotherAnimationTest.swift in Sources */,
 				5C482F47281308E10007A6E4 /* TestNewMethod.swift in Sources */,
-				5C3CF55F27C7E80200E9EC22 /* mainScreen.swift in Sources */,
 				5C5A5E1F27B54EF3000DE807 /* EPHSApp.swift in Sources */,
-				5C3CF56127C7F15500E9EC22 /* ViewModifier.swift in Sources */,
-				5CABEF7127D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C625437281B0C510042EF85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C62544E281B0E660042EF85 /* ProgressBar.swift in Sources */,
+				5C62544D281B0DD70042EF85 /* dictionary.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C62544F281C3ECA0042EF85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C625463281C3EF90042EF85 /* dictionary.swift in Sources */,
+				5C625462281C3EF90042EF85 /* ProgressBar.swift in Sources */,
+				5C625458281C3ECA0042EF85 /* EPHS_Timer_Widget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,18 +412,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CABEF6B27D1212C00ED78DD /* ClassTimerWidget.swift in Sources */,
-				5CABEF7027D1213100ED78DD /* ClassTimerWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5CABEF7327D1213100ED78DD /* PBXTargetDependency */ = {
+		5C62545D281C3ECE0042EF85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5CABEF6227D1212C00ED78DD /* ClassTimerWidgetExtension */;
-			targetProxy = 5CABEF7227D1213100ED78DD /* PBXContainerItemProxy */;
+			target = 5C625452281C3ECA0042EF85 /* EPHS Timer WidgetExtension */;
+			targetProxy = 5C62545C281C3ECE0042EF85 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -455,6 +555,7 @@
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EPHS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -487,6 +588,7 @@
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EPHS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -503,6 +605,118 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5C625448281B0C540042EF85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TimerWidgerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerWidger/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerWidger;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.classtimer.TimerWidger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C625449281B0C540042EF85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TimerWidgerExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerWidger/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerWidger;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ephs2022.classtimer.TimerWidger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5C625460281C3ECE0042EF85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "EPHS Timer WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EPHS Timer Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EPHS Timer Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ephs2022.classtimer.EPHS-Timer-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C625461281C3ECE0042EF85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "EPHS Timer WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 883DK65VTV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EPHS Timer Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EPHS Timer Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ephs2022.classtimer.EPHS-Timer-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -577,6 +791,24 @@
 			buildConfigurations = (
 				5C5A5E2A27B54EF7000DE807 /* Debug */,
 				5C5A5E2B27B54EF7000DE807 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C62544A281B0C540042EF85 /* Build configuration list for PBXNativeTarget "TimerWidgerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C625448281B0C540042EF85 /* Debug */,
+				5C625449281B0C540042EF85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C62545F281C3ECE0042EF85 /* Build configuration list for PBXNativeTarget "EPHS Timer WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C625460281C3ECE0042EF85 /* Debug */,
+				5C625461281C3ECE0042EF85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

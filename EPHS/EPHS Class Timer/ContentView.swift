@@ -293,9 +293,7 @@ struct ContentView: View {
             timeRemaing()
             
             
-           // print(timeDict.timeDict)
-            
-            //print(timeDict.timeDict)
+         //
             
             
             if dayUpdater != getDayOfTheWeek(){

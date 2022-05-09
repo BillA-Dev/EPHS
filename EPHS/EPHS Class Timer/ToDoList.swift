@@ -28,6 +28,7 @@ struct ToDoList: View {
     
     @State var toDoDict: [String: [listsss]] = ["First Hour":[], "Second Hour": [], "Third Hour": [], "Fourth Hour": []]//The arr string is ListOfitems
     
+    @EnvironmentObject var timeDict: dictionary
     
     @State var originalPickedLunch: Int = 0
     
