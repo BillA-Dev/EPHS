@@ -12,7 +12,7 @@ struct MainTutorialScreen: View {
     @Binding var tutorialStarted: Bool
     var body: some View {
         TabView(){
-            Text("One View")
+            widgetTutorial()
            Text("Second View")
             Button(action:{
                 tutorialStarted = false
@@ -26,6 +26,16 @@ struct MainTutorialScreen: View {
         
     }
 }
+
+struct widgetTutorial: View {
+    var body: some View {
+        //need to remove watermark once design is finalized
+        Image("tempWidget")
+            .resizable()
+        
+    }
+}
+
 
 struct MainTutorialScreen_Previews: PreviewProvider {
     static var previews: some View {
