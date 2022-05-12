@@ -12,14 +12,30 @@ struct MainTutorialScreen: View {
     @Binding var tutorialStarted: Bool
     var body: some View {
         TabView(){
-            widgetTutorial()
-           Text("Second View")
+            //widgetTutorial()
+          // Text("Second View")
+            ZStack {
+                widgetTutorial()
+                VStack {
+                    Spacer(minLength: 700)
+                    
+                    Button(action:{
+                        tutorialStarted = false
+                    }){
+                        Text("End")
+                            .font(.title)
+
+                    }
+                    Spacer()
+                }
+            }
+            /*
             Button(action:{
                 tutorialStarted = false
             }){
                 Text("End")
             }
-
+*/
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
@@ -28,9 +44,10 @@ struct MainTutorialScreen: View {
 }
 
 struct widgetTutorial: View {
+ 
     var body: some View {
-        //need to remove watermark once design is finalized
-        Image("tempWidget")
+ 
+        Image("tutorial")
             .resizable()
         
     }
